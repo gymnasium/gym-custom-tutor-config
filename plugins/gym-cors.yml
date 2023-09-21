@@ -1,0 +1,11 @@
+name: gym-cors
+version: 16.1.8
+patches:
+  caddyfile-lms: |
+    header * {
+      # Content-Security-Policy "frame-ancestors 'self' {{ LMS_HOST }} *.{{ LMS_HOST }} {{ MARKETING_SITE_BASE_URL }} gym.soy *.gym.soy learn.gym.soy *.learn.gym.soy gymnasium.day *.gymnasium.day learn.gymnasium.day *.learn.gymnasium.day dev.gymnasium.day *.dev.gymnasium.day learn.dev.gymnasium.day *.learn.dev.gymnasium.day overhang.io local.overhang.io *.local.overhang.io;
+      # connect-src {{ LMS_HOST }} *.{{ LMS_HOST }} gym.soy *.gym.soy learn.gym.soy *.learn.gym.soy gymnasium.day *.gymnasium.day learn.gymnasium.day *.learn.gymnasium.day dev.gymnasium.day *.dev.gymnasium.day learn.dev.gymnasium.day *.learn.dev.gymnasium.day overhang.io local.overhang.io *.local.overhang.io;
+      # script-src {{ LMS_HOST }} *.{{ LMS_HOST }} gym.soy *.gym.soy learn.gym.soy *.learn.gym.soy gymnasium.day *.gymnasium.day learn.gymnasium.day *.learn.gymnasium.day dev.gymnasium.day *.dev.gymnasium.day learn.dev.gymnasium.day *.learn.dev.gymnasium.day overhang.io local.overhang.io *.local.overhang.io;
+      # worker-src {{ LMS_HOST }} *.{{ LMS_HOST }} gym.soy *.gym.soy learn.gym.soy *.learn.gym.soy gymnasium.day *.gymnasium.day learn.gymnasium.day *.learn.gymnasium.day dev.gymnasium.day *.dev.gymnasium.day learn.dev.gymnasium.day *.learn.dev.gymnasium.day overhang.io local.overhang.io *.local.overhang.io;
+      "
+    }

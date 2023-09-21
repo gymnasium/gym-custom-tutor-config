@@ -19,7 +19,7 @@ def send_contact_form_email(request):
         email = EmailMessage()
         email.subject = f"Request for contact from {settings.LMS_BASE}"
         email.from_email = settings.DEFAULT_FROM_EMAIL
-        email.to = ["helpdesk@abstract-technology.de"]
+        email.to = ["helpdesk@gymnasiumnology.de"]
         if not payload.get("email"):
             return JsonResponse({"error": "The email field is required"})
         if not payload.get("Organization"):

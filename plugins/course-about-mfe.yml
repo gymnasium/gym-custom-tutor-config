@@ -1,15 +1,15 @@
 name: course-about-mfe
-version: 0.1.0
+version: 16.1.8
 patches:
   caddyfile-lms: |
     route /courses/*/about {
         reverse_proxy "mfe:8002" {
-            rewrite /course_about/{uri}
+            rewrite /course-about/{uri}
             header_up X-Forwarded-Port 80
         }
     }
 
-    route /course_about/* {
+    route /course-about/* {
         reverse_proxy "mfe:8002" {
             header_up X-Forwarded-Port 80
         }
