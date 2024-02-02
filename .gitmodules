@@ -38,7 +38,7 @@
 	path = plugins/gym-mfe
 	url = https://github.com/gymnasium/gym-mfe.git
 	branch = gym.palm.4
-[submodule "plugins/gym-theme-tutor-plugin"]
-	path = plugins/gym-theme-tutor-plugin
-	url = git@github.com:gymnasium/gym-theme-tutor-plugin
+[submodule "plugins/gym-theme"]
+	path = plugins/gym-theme
+	url = git@github.com:gymnasium/gym-theme
 	branch = gym.palm.4
