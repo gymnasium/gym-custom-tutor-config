@@ -1,8 +1,11 @@
 from tutormfe.hooks import MFE_APPS
 from tutor import hooks
 import requests
+from dotenv import load_dotenv
 
-response = requests.get('https://gym.soy/feeds/config.json')
+load_dotenv()
+
+response = requests.get('http://local.overhang.io/feeds/config.json')
 if response.status_code == 200:
     data = response.json()
 else:
@@ -107,27 +110,16 @@ def mfe_forks(mfes):
     
     return mfes
 
+
+
 # Update common settings
 hooks.Filters.ENV_PATCHES.add_items([
 (
 "openedx-lms-common-settings",
 f"""
-CORS_ORIGIN_WHITELIST.append("https://gym.soy")
-CSRF_TRUSTED_ORIGINS.append("https://gym.soy")
-LOGIN_REDIRECT_WHITELIST.append("https://gym.soy")
-
-CORS_ORIGIN_WHITELIST.append("http://overhang.io")
-CSRF_TRUSTED_ORIGINS.append("http://overhang.io")
-LOGIN_REDIRECT_WHITELIST.append("http://overhang.io")
-
-CORS_ORIGIN_WHITELIST.append("http://local.overhang.io:4040")
-CSRF_TRUSTED_ORIGINS.append("http://local.overhang.io:4040")
-LOGIN_REDIRECT_WHITELIST.append("http://local.overhang.io:4040")
-
-# Course About
-CORS_ORIGIN_WHITELIST.append("http://apps.local.overhang.io:3000")
-LOGIN_REDIRECT_WHITELIST.append("apps.local.overhang.io:3000")
-CSRF_TRUSTED_ORIGINS.append("apps.local.overhang.io:3000")
+CORS_ORIGIN_WHITELIST.append("{data["urls"]["root"]}")
+CSRF_TRUSTED_ORIGINS.append("{data["urls"]["root"]}")
+LOGIN_REDIRECT_WHITELIST.append("{data["urls"]["root"]}")
 
 SESSION_COOKIE_DOMAIN="overhang.io"
 SHARED_COOKIE_DOMAIN = "overhang.io"
@@ -158,12 +150,14 @@ MFE_CONFIG["MARKETING_SITE_ROOT"] = '{data["urls"]["root"]}'
 (
 "mfe-dockerfile-post-npm-install",
 """
+RUN echo "working dir"; PWD;
+
 ADD https://api.github.com/repos/gymnasium/brand-openedx/git/refs/heads/gym.palm.4 /tmp/gitref-brand
 
-COPY $TUTOR_ROOT/mfe/brand-openedx /openedx/brand-openedx
+COPY "$TUTOR_ROOT/mfe/brand-openedx /openedx/brand-openedx"
 RUN npm install '@openedx/brand-openedx@file:../brand-openedx' --registry=$NPM_REGISTRY
 
-COPY $TUTOR_ROOT/mfe/gym-frontend-components /openedx/app/src/gym-frontend-components
+COPY "$TUTOR_ROOT/mfe/gym-frontend-components /openedx/app/src/gym-frontend-components"
 """,
 ),
 ],
