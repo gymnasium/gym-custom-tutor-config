@@ -1,18 +1,21 @@
 # Tutor Custom
 
+- These instructions are WIP.
+- These instructions are currently specific to Mac OS.
+
 ## Prerequisites
 This proof-of-concept Tutor config depends on a separate marketing frontend running at `local.overhang.io`. See the [gym-eleventy](https://github.com/gymnasium/gym-eleventy) repo for specific instructions running the netlify CLI locally.
 
 ## Installation
-These instructions are WIP.
 
-These instructions are currently specific to Mac OS.
 
 ### direnv
 1. Install direnv
 ```
 brew install direnv
 ```
+
+Be sure to add the relevant hook to your shell: https://direnv.net/docs/hook.html
 
 ### TVM
 1. Install [Tutor Version Manager](https://github.com/eduNEXT/tvm)
@@ -46,6 +49,11 @@ cd gym-quince-1
 1. Allow direnv access to the folder (only needed initially)
 ```
 direnv allow
+```
+
+1. Activate the environment:
+```
+source .tvm/bin/activate
 ```
 
 1. Clone either the specific branch or the entire repo as determined by your needs.
