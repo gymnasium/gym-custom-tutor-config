@@ -40,4 +40,5 @@
 	branch = gym.palm.4
 [submodule "plugins/gym-theme"]
 	path = plugins/gym-theme
-	url = https://github.com/gymnasium/gym-theme
+	url = git@github.com:gymnasium/gym-theme
+	branch = gym.palm.4
