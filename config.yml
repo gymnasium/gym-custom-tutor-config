@@ -70,38 +70,38 @@ MFE_ACCOUNT_MFE_APP:
   name: account
   port: 1997
   repository: https://github.com/gymnasium/frontend-app-account
-  version: gym.palm.4
+  version: gym.quince.1
 MFE_AUTHN_MFE_APP:
   name: authn
   port: 1999
   repository: https://github.com/gymnasium/frontend-app-authn
-  version: gym.palm.4
+  version: gym.quince.1
 MFE_COURSE_ABOUT_MFE_APP:
   name: course-about
   port: 3000
   repository: https://github.com/gymnasium/frontend-app-course-about
-  version: gym.palm.4
+  version: gym.quince.1
 MFE_DISCUSSIONS_MFE_APP:
   name: discussions
   port: 2002
   repository: https://github.com/gymnasium/frontend-app-discussions
-  version: gym.palm.4
+  version: gym.quince.1
 MFE_DOCKER_IMAGE: docker.io/gymnasium/gym-theme-mfe:16.1.8
 MFE_LEARNER_DASHBOARD_MFE_APP:
   name: learner-dashboard
   port: 1996
   repository: https://github.com/gymnasium/frontend-app-learner-dashboard
-  version: gym.palm.4
+  version: gym.quince.1
 MFE_LEARNING_MFE_APP:
   name: learning
   port: 2000
   repository: https://github.com/gymnasium/frontend-app-learning
-  version: gym.palm.4
+  version: gym.quince.1
 MFE_PROFILE_MFE_APP:
   name: profile
   port: 1995
   repository: https://github.com/gymnasium/frontend-app-profile
-  version: gym.palm.4
+  version: gym.quince.1
 MOUNTS:
 - ./mfe/frontend-app-account
 - ./mfe/frontend-app-authn
@@ -128,7 +128,6 @@ PLUGINS:
 - gym-cors
 - gym-mfe
 - gym-theme
-- learner-dashboard-mfe
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
 PREVIEW_LMS_HOST: preview.local.overhang.io
