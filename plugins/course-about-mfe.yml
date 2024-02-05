@@ -1,5 +1,5 @@
 name: course-about-mfe
-version: 16.1.8
+version: 17.0.0
 patches:
   caddyfile-lms: |
     route /courses/*/about {

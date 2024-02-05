@@ -1,4 +1,4 @@
-from tutormfe.hooks import MFE_APPS
+from gymmfe.hooks import MFE_APPS
 from tutor import hooks
 import requests
 from dotenv import load_dotenv
