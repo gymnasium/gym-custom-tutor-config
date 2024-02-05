@@ -2,10 +2,10 @@ CAIRN_CLICKHOUSE_PASSWORD: eGUhQbWMRSKSrB6LJqPl
 CAIRN_POSTGRESQL_PASSWORD: KQY1VDAkTPKZz0bAi9J9
 CAIRN_SSO_CLIENT_SECRET: 7ojP8DylFPiJN83O46VL
 CAIRN_SUPERSET_SECRET_KEY: WcbX8dsobUWH5zOgHDz4
-CMS_HOST: studio.local.overhang.io
+CMS_HOST: studio.local.edly.io
 CMS_OAUTH2_SECRET: 2icx54cdu9SJ77KMlZgHTWcm
 CONTACT_EMAIL: help@thegymnasium.com
-DOCKER_IMAGE_OPENEDX: docker.io/gymnasium/gym-theme-openedx:16.1.8
+DOCKER_IMAGE_OPENEDX: docker.io/gymnasium/gym-theme-openedx:17.0.1
 ENABLE_HTTPS: false
 ENABLE_WEB_PROXY: true
 ID: jxBish2U54zbLTe82GMVvnyO
@@ -63,9 +63,9 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
 
   -----END RSA PRIVATE KEY-----'
 LANGUAGE_CODE: en
-LMS_HOST: local.overhang.io
-MARKETING_SITE_BASE_URL: http://local.overhang.io
-MARKETING_SITE_ROOT: http://local.overhang.io
+LMS_HOST: local.edly.io
+MARKETING_SITE_BASE_URL: edly.io
+MARKETING_SITE_ROOT: edly.io
 MFE_ACCOUNT_MFE_APP:
   name: account
   port: 1997
@@ -86,7 +86,7 @@ MFE_DISCUSSIONS_MFE_APP:
   port: 2002
   repository: https://github.com/gymnasium/frontend-app-discussions
   version: gym.quince.1
-MFE_DOCKER_IMAGE: docker.io/gymnasium/gym-theme-mfe:16.1.8
+MFE_DOCKER_IMAGE: docker.io/gymnasium/gym-theme-mfe:17.0.1
 MFE_LEARNER_DASHBOARD_MFE_APP:
   name: learner-dashboard
   port: 1996
@@ -130,4 +130,4 @@ PLUGINS:
 - gym-theme
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
-PREVIEW_LMS_HOST: preview.local.overhang.io
+PREVIEW_LMS_HOST: preview.local.edly.io
