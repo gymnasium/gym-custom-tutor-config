@@ -25,7 +25,7 @@ pip install git+https://github.com/eduNEXT/tvm.git
 
 1. Install the Tutor version you wish to use.
 ```
-tvm install v16.1.8
+tvm install v17.0.1
 ```
 
 1. Create a main directory to house your tutor configs (for example `your-home folder/dev/tutor/`), ideally one that you can find easily via CLI.
@@ -36,19 +36,19 @@ mkdir
 1. Clone either the specific branch or the entire repo as determined by your needs.
 ```
 git clone --branch <branchname> --recursive <remote-repo-url> <dest-dir>
-# git clone -b gym.palm.4 --recursive https://github.com/gymnasium/gym-custom-tutor-config.git palm_4
+# git clone -b gym.quince.1 --recursive https://github.com/gymnasium/gym-custom-tutor-config.git quince_1
 ```
 
 1. enter the directory:
 ```
-cd palm_4
+cd quince_1
 ```
 
 1. Create a new TVM project
 Please note the project title cannot include periods, lest TVM puke.
 ```
 tvm project init
-# tvm project init palm4 v16.1.8
+# tvm project init palm4 v17.0.1
 ```
 
 1. Allow direnv access to the folder (only needed initially)
