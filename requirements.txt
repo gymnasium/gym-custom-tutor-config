@@ -74,9 +74,9 @@ tomli==2.0.1
     #   tutor-minio
 # tutor-cairn==16.0.3
     # via -r requirements.in
-tutor-forum==16.0.2
+tutor-forum==17.0.0
     # via -r requirements.in
-tutor-mfe==16.1.3
+tutor-mfe==17.0.0
     # via -r requirements.in
 # tutor-minio==16.0.3
     # via -r requirements.in
