@@ -8,6 +8,8 @@ CONTACT_EMAIL: help@thegymnasium.com
 DOCKER_IMAGE_OPENEDX: gymnasium/gym-theme-openedx:17.0.1
 ENABLE_HTTPS: false
 ENABLE_WEB_PROXY: true
+FEATURES:
+- ENABLE_MKTG_SITE: true
 ID: jxBish2U54zbLTe82GMVvnyO
 JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
 
@@ -64,8 +66,8 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----'
 LANGUAGE_CODE: en
 LMS_HOST: local.edly.io
-MARKETING_SITE_BASE_URL: edly.io
-MARKETING_SITE_ROOT: edly.io
+MARKETING_SITE_BASE_URL: http://edly.io
+MARKETING_SITE_ROOT: http://edly.io
 MFE_ACCOUNT_MFE_APP:
   name: account
   port: 1997
