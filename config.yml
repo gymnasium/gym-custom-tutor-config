@@ -5,7 +5,7 @@ CAIRN_SUPERSET_SECRET_KEY: WcbX8dsobUWH5zOgHDz4
 CMS_HOST: studio.local.edly.io
 CMS_OAUTH2_SECRET: 2icx54cdu9SJ77KMlZgHTWcm
 CONTACT_EMAIL: help@thegymnasium.com
-DOCKER_IMAGE_OPENEDX: docker.io/gymnasium/gym-theme-openedx:17.0.1
+DOCKER_IMAGE_OPENEDX: gymnasium/gym-theme-openedx:17.0.1
 ENABLE_HTTPS: false
 ENABLE_WEB_PROXY: true
 ID: jxBish2U54zbLTe82GMVvnyO
@@ -86,7 +86,7 @@ MFE_DISCUSSIONS_MFE_APP:
   port: 2002
   repository: https://github.com/gymnasium/frontend-app-discussions
   version: gym.quince.1
-MFE_DOCKER_IMAGE: docker.io/gymnasium/gym-theme-mfe:17.0.1
+MFE_DOCKER_IMAGE: gymnasium/gym-theme-mfe:17.0.1
 MFE_LEARNER_DASHBOARD_MFE_APP:
   name: learner-dashboard
   port: 1996
