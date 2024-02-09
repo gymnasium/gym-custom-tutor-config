@@ -121,6 +121,10 @@ CORS_ORIGIN_WHITELIST.append("{data["urls"]["root"]}")
 CSRF_TRUSTED_ORIGINS.append("{data["urls"]["root"]}")
 LOGIN_REDIRECT_WHITELIST.append("{data["urls"]["root"]}")
 
+CORS_ORIGIN_WHITELIST.append("https://gym.soy")
+CSRF_TRUSTED_ORIGINS.append("https://gym.soy")
+LOGIN_REDIRECT_WHITELIST.append("https://gym.soy")
+
 SESSION_COOKIE_DOMAIN="edly.io"
 SHARED_COOKIE_DOMAIN = "edly.io"
 
@@ -153,9 +157,8 @@ MFE_CONFIG["MARKETING_SITE_ROOT"] = '{data["urls"]["root"]}'
 ADD https://api.github.com/repos/gymnasium/brand-openedx/git/refs/heads/gym.quince.1 /tmp/gitref-brand
 RUN npm install '@openedx/brand-openedx@file:../brand-openedx' --registry=$NPM_REGISTRY
 
-# ADD https://api.github.com/repos/gymnasium/gym-frontend-components/git/refs/heads/gym.quince.1 /tmp/gitref-components
-
-RUN git clone --depth 1 -b gym.quince.1 https://github.com/gymnasium/gym-frontend-components.git /openedx/app/src/gym-frontend-components
+ADD https://api.github.com/repos/gymnasium/gym-frontend-components/git/refs/heads/gym.quince.1 /tmp/gitref-components
+RUN npm install '@edx/gym-frontend@file:../gym-frontend-components' --registry=$NPM_REGISTRY
 
 """,
 ),
