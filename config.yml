@@ -66,7 +66,7 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----'
 LANGUAGE_CODE: en
 LMS_HOST: local.edly.io
-MARKETING_SITE_BASE_URL: http://edly.io
+MARKETING_SITE_BASE_URL: edly.io
 MARKETING_SITE_ROOT: http://edly.io
 MFE_ACCOUNT_MFE_APP:
   name: account
@@ -112,13 +112,13 @@ MOUNTS:
 - ./mfe/frontend-app-learner-dashboard
 - ./mfe/frontend-app-learning
 - ./mfe/frontend-app-profile
-- account:./mfe/gym-frontend-components:/openedx/app/src/gym-frontend-components
-- authn:./mfe/gym-frontend-components:/openedx/app/src/gym-frontend-components
-- course-about:./mfe/gym-frontend-components:/openedx/app/src/gym-frontend-components
-- discussions:./mfe/gym-frontend-components:/openedx/app/src/gym-frontend-components
-- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/src/gym-frontend-components
-- learning:./mfe/gym-frontend-components:/openedx/app/src/gym-frontend-components
-- profile:./mfe/gym-frontend-components:/openedx/app/src/gym-frontend-components
+- account:./mfe/gym-frontend-components:/openedx/app/src/@edx/gym-frontend
+- authn:./mfe/gym-frontend-components:/openedx/app/src/@edx/gym-frontend
+- course-about:./mfe/gym-frontend-components:/openedx/app/src/@edx/gym-frontend
+- discussions:./mfe/gym-frontend-components:/openedx/app/src/@edx/gym-frontend
+- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/src/@edx/gym-frontend
+- learning:./mfe/gym-frontend-components:/openedx/app/src/@edx/gym-frontend
+- profile:./mfe/gym-frontend-components:/openedx/app/src/@edx/gym-frontend
 MYSQL_ROOT_PASSWORD: 43Lfuln2
 OPENEDX_MYSQL_PASSWORD: 2waV0m9w
 OPENEDX_SECRET_KEY: eHqeglW5j7T68yYtr3yL6XPz
