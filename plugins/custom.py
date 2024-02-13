@@ -5,7 +5,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-response = requests.get('http://local.edly.io/feeds/config.json')
+# TODO: implement .env files for the config URL
+
+response = requests.get('http://edly.io:8888/feeds/config.json')
 if response.status_code == 200:
     data = response.json()
 else:
@@ -154,6 +156,9 @@ MFE_CONFIG["MARKETING_SITE_ROOT"] = '{data["urls"]["root"]}'
 (
 "mfe-dockerfile-post-npm-install",
 """
+# Add dompurify
+RUN npm install dompurify --registry=$NPM_REGISTRY
+
 ADD https://api.github.com/repos/gymnasium/brand-openedx/git/refs/heads/gym.quince.1 /tmp/gitref-brand
 RUN npm install '@openedx/brand-openedx@file:../brand-openedx' --registry=$NPM_REGISTRY
 
