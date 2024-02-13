@@ -66,8 +66,8 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----'
 LANGUAGE_CODE: en
 LMS_HOST: local.edly.io
-MARKETING_SITE_BASE_URL: edly.io
-MARKETING_SITE_ROOT: http://edly.io
+MARKETING_SITE_BASE_URL: edly.io:8888
+MARKETING_SITE_ROOT: http://edly.io:8888
 MFE_ACCOUNT_MFE_APP:
   name: account
   port: 1997
