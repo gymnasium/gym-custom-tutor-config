@@ -136,16 +136,19 @@ SHARED_COOKIE_DOMAIN = "edly.io"
 "mfe-lms-common-settings",
 f"""
 # Custom LMS Settings
-MFE_CONFIG["LOGO_URL"] = '{data["urls"]["cms"]}{data["logos"]["main"]["black"]["src"]}'
-MFE_CONFIG["LOGO_TRADEMARK_URL"] = '{data["urls"]["cms"]}{data["logos"]["main"]["black"]["src"]}'
-MFE_CONFIG["LOGO_WHITE_URL"] = '{data["urls"]["cms"]}{data["logos"]["main"]["white"]["src"]}'
+
+#
 MFE_CONFIG["INFO_EMAIL"] = 'help@thegymnasium.com'
 MFE_CONFIG["PASSWORD_RESET_SUPPORT_LINK"] = 'mailto:help@thegymnasium.com'
 MFE_CONFIG["SITE_NAME"] = '{data["meta"]["title"]}'
 MFE_CONFIG["CONTACT_MAILING_ADDRESS"] = ""
-MFE_CONFIG["FAVICON_URL"] = '{data["urls"]["cms"]}/favicon.ico'
+MFE_CONFIG["FAVICON_URL"] = '{data["urls"]["root"]}/favicon.svg'
 MFE_CONFIG["MARKETING_SITE_BASE_URL"] = '{data["urls"]["root"]}'
 MFE_CONFIG["MARKETING_SITE_ROOT"] = '{data["urls"]["root"]}'
+# These images are only applied to non-public facing/internal use MFEs (course authoring, etc)
+MFE_CONFIG["LOGO_URL"] = '{data["urls"]["cms"]}/static/studio/gym-theme/images/studio-logo.png'
+MFE_CONFIG["LOGO_TRADEMARK_URL"] = '{data["urls"]["cms"]}/static/studio/gym-theme/images/studio-logo.png'
+MFE_CONFIG["LOGO_WHITE_URL"] = '{data["urls"]["cms"]}/static/studio/gym-theme/images/studio-logo.png'
 """
 ),
 # (
@@ -162,8 +165,8 @@ RUN npm install dompurify --registry=$NPM_REGISTRY
 ADD https://api.github.com/repos/gymnasium/brand-openedx/git/refs/heads/gym.quince.1 /tmp/gitref-brand
 RUN npm install '@openedx/brand-openedx@file:../brand-openedx' --registry=$NPM_REGISTRY
 
-ADD https://api.github.com/repos/gymnasium/gym-frontend-components/git/refs/heads/gym.quince.1 /tmp/gitref-components
-RUN npm install '@edx/gym-frontend@file:../gym-frontend-components' --registry=$NPM_REGISTRY
+# ADD https://api.github.com/repos/gymnasium/gym-frontend-components/git/refs/heads/gym.quince.1 /tmp/gitref-components
+# RUN npm install '@edx/gym-frontend@file:../gym-frontend-components' --registry=$NPM_REGISTRY
 
 """,
 ),
