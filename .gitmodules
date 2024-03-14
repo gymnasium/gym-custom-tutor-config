@@ -9,7 +9,7 @@
 [submodule "mfe/frontend-app-authn"]
 	path = mfe/frontend-app-authn
 	url = git@github.com:gymnasium/frontend-app-authn.git
-	branch = gym.quince.2
+	branch = gym.quince.1
 [submodule "mfe/frontend-app-course-about"]
 	path = mfe/frontend-app-course-about
 	url = git@github.com:gymnasium/frontend-app-course-about
