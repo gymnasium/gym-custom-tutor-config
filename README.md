@@ -112,7 +112,7 @@ tutor config save
 ```
 Build dev images
 ```
-tutor images build openedx-dev account-dev authn-dev course-about-dev discussion-dev learner-dashboard-dev learning-dev profile-dev --no-cache --no-registry-cache
+tutor images build openedx-dev account-dev authn-dev course-about-dev discussions-dev learner-dashboard-dev learning-dev profile-dev --no-cache --no-registry-cache
 ```
 
 and theoretically, you should be able to:
