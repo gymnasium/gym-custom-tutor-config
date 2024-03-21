@@ -93,19 +93,39 @@ Install our custom plugins (from the project root)
 pip install -e plugins/gym-theme
 pip install -e plugins/gym-mfe
 ```
+Then, enable the plugins:
+
+```
+tutor plugins enable gym-mfe gym-theme
+```
+
+Save the config again:
+```
+tutor config save
+tutor images build all
+```
+
+Then to run in dev mode, make sure 11ty is running in `local` mode: `npm run local`, and available at `http://edly.io:8888`.
 
 ```
 tutor config save
-<!-- tutor dev do init -->
+```
+Build dev images
+```
+tutor images build openedx-dev account-dev authn-dev course-about-dev discussion-dev learner-dashboard-dev learning-dev profile-dev
+```
 
-tutor images build all
+and theoretically, you should be able to:
+```
 tutor dev launch
+```
+
+## TODO: sort out more instructions:
 
 
+```
 tutor dev do settheme gym-theme
 tutor dev restart openedx
-
-tutor images build openedx-dev?
 ```
 
 Subsequently, start up as follows:
