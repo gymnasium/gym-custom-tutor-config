@@ -73,6 +73,7 @@ tutor local stop
 
 
 1.  Clone the this repo into the directory
+```
 git init .
 git remote add origin https://github.com/gymnasium/gym-custom-tutor-config
 git pull origin gym.quince.1 --recurse-submodules
