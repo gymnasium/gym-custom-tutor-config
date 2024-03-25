@@ -103,8 +103,9 @@ tutor plugins enable gym-mfe gym-theme
 Save the config again:
 ```
 tutor config save
-tutor images build all
 ```
+
+### Tutor Dev Mode
 
 Then to run in dev mode, make sure 11ty is running in `local` mode: `npm run local`, and available at `http://edly.io:8888`.
 
@@ -123,7 +124,7 @@ tutor images build learning-dev --no-cache --no-registry-cache
 tutor images build profile-dev --no-cache --no-registry-cache
 ```
 
-### Bind Mounts
+#### Bind Mounts
 Since dev uses bind mounts in the config, you'll need to go to each MFE folder and run:
 ```
 nvm use
@@ -134,6 +135,22 @@ npm install
 Theoretically, you should be able to:
 ```
 tutor dev launch
+```
+
+### Tutor Local Mode
+This is to run tutor in "production" mode.
+
+Instructions TBD/WIP:
+
+```
+tutor images build openedx --no-cache --no-registry-cache
+tutor images build mfe --no-cache --no-registry-cache
+```
+
+And then:
+
+```
+tutor local launch
 ```
 
 ## TODO: sort out more instructions:
