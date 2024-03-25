@@ -83,6 +83,7 @@ git pull origin gym.quince.1 --recurse-submodules
 ## Custom Tutor Initialization
 The following commands should be executed from the project root folder. Make sure your static site is running at port 8888.
 
+### Setup
 On first install, run the following to install packages for our customized Tutor:
 ```
 git submodule update --init --recursive
@@ -112,10 +113,25 @@ tutor config save
 ```
 Build dev images
 ```
-tutor images build openedx-dev account-dev authn-dev course-about-dev discussions-dev learner-dashboard-dev learning-dev profile-dev --no-cache --no-registry-cache
+tutor images build openedx-dev --no-cache --no-registry-cache
+tutor images build account-dev --no-cache --no-registry-cache
+tutor images build authn-dev --no-cache --no-registry-cache
+tutor images build course-about-dev --no-cache --no-registry-cache
+tutor images build discussions-dev --no-cache --no-registry-cache
+tutor images build learner-dashboard-dev --no-cache --no-registry-cache
+tutor images build learning-dev --no-cache --no-registry-cache
+tutor images build profile-dev --no-cache --no-registry-cache
 ```
 
-and theoretically, you should be able to:
+### Bind Mounts
+Since dev uses bind mounts in the config, you'll need to go to each MFE folder and run:
+```
+nvm use
+npm install
+```
+
+###n Start Tutor in Dev Mode
+Theoretically, you should be able to:
 ```
 tutor dev launch
 ```
