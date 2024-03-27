@@ -112,12 +112,14 @@ Then to run in dev mode, make sure 11ty is running in `local` mode: `npm run loc
 ```
 tutor config save
 ```
+
 Build dev images
 ```
 tutor images build openedx-dev --no-cache --no-registry-cache
 tutor images build account-dev --no-cache --no-registry-cache
 tutor images build authn-dev --no-cache --no-registry-cache
 tutor images build course-about-dev --no-cache --no-registry-cache
+tutor images build course-authoring-dev --no-cache --no-registry-cache
 tutor images build discussions-dev --no-cache --no-registry-cache
 tutor images build learner-dashboard-dev --no-cache --no-registry-cache
 tutor images build learning-dev --no-cache --no-registry-cache
@@ -140,12 +142,28 @@ tutor dev launch
 ### Tutor Local Mode
 This is to run tutor in "production" mode.
 
-Instructions TBD/WIP:
+#### Instructions TBD/WIP:
+
+Make sure eleventy is running in `tutor:local` mode: `npm run tutor:local`.
+
+
+Disable development course-about plugin:
+```
+tutor plugins disable course-about-mfe
+```
+
+Enable production course-about plugin:
+
+```
+tutor plugins enable course-about-mfe-prod
+```
+
 
 ```
 tutor images build openedx --no-cache --no-registry-cache
 tutor images build mfe --no-cache --no-registry-cache
 ```
+
 
 And then:
 
