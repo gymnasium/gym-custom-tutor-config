@@ -1,58 +1,40 @@
-[submodule "mfe/frontend-app-profile"]
-	path = mfe/frontend-app-profile
-	url = git@github.com:Abstract-Tech/community-theme-profile.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-app-learning"]
-	path = mfe/frontend-app-learning
-	url = git@github.com:Abstract-Tech/community-theme-learning.git
-	branch = community-theme.master
-[submodule "mfe/frontend-app-course_about"]
-	path = mfe/frontend-app-course_about
-	url = git@github.com:Abstract-Tech/community-theme-course-about.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-app-gradebook"]
-	path = mfe/frontend-app-gradebook
-	url = git@github.com:Abstract-Tech/community-theme-gradebook.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-app-account"]
-	path = mfe/frontend-app-account
-	url = git@github.com:Abstract-Tech/community-theme-account.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-app-home"]
-	path = mfe/frontend-app-home
-	url = git@github.com:Abstract-Tech/community-theme-home.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-component-footer"]
-	path = mfe/frontend-component-footer
-	url = git@github.com:Abstract-Tech/community-theme-footer.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-component-header"]
-	path = mfe/frontend-component-header
-	url = git@github.com:Abstract-Tech/community-theme-header.git
-	branch = community-theme.palm
 [submodule "mfe/brand-openedx"]
 	path = mfe/brand-openedx
-	url = git@github.com:Abstract-Tech/community-theme-brand.git
-	branch = community-theme
-[submodule "mfe/frontend-app-discussions"]
-	path = mfe/frontend-app-discussions
-	url = git@github.com:Abstract-Tech/community-theme-discussions.git
-	branch = community-theme.palm
+	url = git@github.com:gymnasium/brand-openedx.git
+	branch = gym.quince.1
+[submodule "mfe/frontend-app-account"]
+	path = mfe/frontend-app-account
+	url = git@github.com:gymnasium/frontend-app-account.git
+	branch = gym.quince.1
 [submodule "mfe/frontend-app-authn"]
 	path = mfe/frontend-app-authn
-	url = git@github.com:Abstract-Tech/community-theme-authn.git
-	branch = community-theme.palm
+	url = git@github.com:gymnasium/frontend-app-authn.git
+	branch = gym.quince.1
+[submodule "mfe/frontend-app-course-about"]
+	path = mfe/frontend-app-course-about
+	url = git@github.com:gymnasium/frontend-app-course-about
+	branch = gym.quince.1
 [submodule "mfe/frontend-app-course-authoring"]
 	path = mfe/frontend-app-course-authoring
-	url = git@github.com:Abstract-Tech/community-theme-course-authoring.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-app-communications"]
-	path = mfe/frontend-app-communications
-	url = git@github.com:Abstract-Tech/community-theme-communications.git
-	branch = community-theme.palm
-[submodule "mfe/frontend-app-ora-grading"]
-	path = mfe/frontend-app-ora-grading
-	url = git@github.com:Abstract-Tech/community-theme-ora-grading.git
-	branch = community-theme.palm
-
-
+	url = https://github.com/gymnasium/frontend-app-course-authoring.git
+	branch = gym.quince.1
+[submodule "mfe/frontend-app-discussions"]
+	path = mfe/frontend-app-discussions
+	url = git@github.com:gymnasium/frontend-app-discussions.git
+	branch = gym.quince.1
+[submodule "mfe/frontend-app-learner-dashboard"]
+	path = mfe/frontend-app-learner-dashboard
+	url = git@github.com:gymnasium/frontend-app-learner-dashboard
+	branch = gym.quince.1
+[submodule "mfe/frontend-app-learning"]
+	path = mfe/frontend-app-learning
+	url = git@github.com:gymnasium/frontend-app-learning.git
+	branch = gym.quince.1
+[submodule "mfe/frontend-app-profile"]
+	path = mfe/frontend-app-profile
+	url = git@github.com:gymnasium/frontend-app-profile.git
+	branch = gym.quince.1
+[submodule "mfe/gym-frontend-components"]
+	path = mfe/gym-frontend-components
+	url = https://github.com/gymnasium/gym-frontend-components.git
+	branch = gym.quince.1
