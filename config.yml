@@ -78,10 +78,13 @@ OPENEDX_MYSQL_PASSWORD: 2waV0m9w
 OPENEDX_SECRET_KEY: eHqeglW5j7T68yYtr3yL6XPz
 PLATFORM_NAME: Gymnasium
 PLUGINS:
-- course-about-mfe-prod
-- gym-mfe
+- course-about-mfe-production
+- custom
+- gym-cors
 - gym-theme
+- gym-mfe
 - mfe
+- mfe-disable
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
 PREVIEW_LMS_HOST: preview.local.edly.io
