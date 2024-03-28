@@ -70,19 +70,16 @@ tutor==17.0.3
     # via
     #   -r requirements.in
     #   tutor-cairn
-    #   tutor-contrib-codejail
     #   tutor-forum
     #   tutor-mfe
-    #   tutor-minio
+    #   gym-theme
 tutor-cairn==17.1.0
     # via -r requirements.in
-tutor-contrib-codejail @ git+https://github.com/edunext/tutor-contrib-codejail
+gym-theme @ git+https://github.com/gymnasium/gym-theme.git#gym.quince.1
     # via -r requirements.in
 tutor-forum==17.0.0
     # via -r requirements.in
 tutor-mfe==17.0.1
-    # via -r requirements.in
-tutor-minio==17.0.0
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
