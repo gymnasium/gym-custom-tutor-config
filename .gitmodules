@@ -34,3 +34,7 @@
 	path = mfe/gym-frontend-components
 	url = git@github.com:gymnasium/gym-frontend-components.git
 	branch = gym.quince.1
+[submodule "plugins/gym-theme"]
+	path = plugins/gym-theme
+	url = git@github.com:gymnasium/gym-theme
+	branch = gym.quince.1
