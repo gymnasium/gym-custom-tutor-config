@@ -81,8 +81,8 @@ PLUGINS:
 - course-about-mfe-production
 - custom
 - gym-cors
-- gym-theme
 - gym-mfe
+- gym-theme
 - mfe
 - mfe-disable
 PLUGIN_INDEXES:
