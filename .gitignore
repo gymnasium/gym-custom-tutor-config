@@ -24,3 +24,6 @@ env/build/permissions
 
 #include django_plugin
 !env/build/openedx/requirements
+
+# tvm folder
+.tvm
