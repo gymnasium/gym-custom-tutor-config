@@ -1,7 +1,0 @@
-name: scorm-fix
-version: 0.1.0
-patches:
-  caddyfile-lms: |
-    header * {
-      Content-Security-Policy "frame-ancestors {{ LMS_HOST }} *.{{ LMS_HOST }};"
-    }
