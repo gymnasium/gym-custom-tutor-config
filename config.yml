@@ -4,11 +4,13 @@ CAIRN_SSO_CLIENT_SECRET: 7ojP8DylFPiJN83O46VL
 CAIRN_SUPERSET_SECRET_KEY: WcbX8dsobUWH5zOgHDz4
 CMS_HOST: studio.local.edly.io
 CMS_OAUTH2_SECRET: 2icx54cdu9SJ77KMlZgHTWcm
-CONTACT_EMAIL: noreply@community.abzt.de
+CONTACT_EMAIL: help@thegymnasium.com
 DOCKER_IMAGE_CADDY: docker.io/library/caddy:2.7.5
-DOCKER_IMAGE_OPENEDX: docker.io/abstract2tech/community-theme-openedx:17.0.0
+DOCKER_IMAGE_OPENEDX: gymnasium/gym-theme-openedx:17.0.3
 ENABLE_HTTPS: false
-ENABLE_WEB_PROXY: true
+ENABLE_WEB_PROXY: false
+FEATURES:
+- ENABLE_MKTG_SITE: true
 ID: jxBish2U54zbLTe82GMVvnyO
 JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
 
@@ -65,28 +67,21 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----'
 LANGUAGE_CODE: en
 LMS_HOST: local.edly.io
-MFE_DOCKER_IMAGE: docker.io/abstract2tech/community-theme-mfe:17.0.0
+MARKETING_SITE_BASE_URL: edly.io:8888
+MARKETING_SITE_ROOT: http://edly.io:8888
+MFE_DOCKER_IMAGE: gymnasium/gym-theme-mfe:17.0.3
 MYSQL_ROOT_PASSWORD: 43Lfuln2
 OPENEDX_EXTRA_PIP_REQUIREMENTS:
-- git+https://github.com/abstract-tech/community-plugin.git
-- openedx-scorm-xblock
-- git+https://github.com/raccoongang/xblock-pdf.git@v1.0.3#egg=xblock-pdf
-- git+https://github.com/Stanford-Online/xblock-in-video-quiz.git#egg=invideoquiz-xblock
-- git+https://github.com/Annoto/xblock-in-video-collaboration.git
-- git+https://github.com/abconlinecourses/chatgpt-xblock.git@v0.1#egg=chatgpt-xblock
+- git+https://github.com/gymnasium/gym-theme.git
 - git+https://github.com/raccoongang/xblock-video.git@master#egg=video_xblock
-- xblock-free-text-response
 OPENEDX_MYSQL_PASSWORD: 2waV0m9w
 OPENEDX_SECRET_KEY: eHqeglW5j7T68yYtr3yL6XPz
-PLATFORM_NAME: Community Theme
+PLATFORM_NAME: Gymnasium
 PLUGINS:
-- community-mfe
-- course-about-mfe
-- home-mfe
+- course-about-mfe-prod
+- gym-mfe
+- gym-theme
 - mfe
-- scorm-fix
-- session-timeout
-- wordpress-dev
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
 PREVIEW_LMS_HOST: preview.local.edly.io
