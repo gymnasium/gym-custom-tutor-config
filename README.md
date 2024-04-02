@@ -258,3 +258,38 @@ tutor local run cms ./manage.py cms backfill_course_outlines
 tutor local run cms ./manage.py cms backfill_course_tabs
 tutor local run cms ./manage.py cms backfill_course_end_dates
 ```
+
+
+## Docker Commands
+
+#### Prune Unused Images
+This is very useful when building tutor images.
+`docker buildx prune -f`
+
+
+# Troubleshooting
+
+### Failed builds
+Docker's default is to utilize all available CPUs in parallel, and this can often cause the MFE image builds to fail. In this event, you can run the following command to limit builds to 1 CPU.
+
+```
+docker buildx create --use --name=singlecpu --config=./buildkitd-single.toml
+```
+Alternately, here are some multi-CPU configs:
+
+Dual:
+```
+docker buildx create --use --name=dualcpu --config=./buildkitd-dual.toml
+```
+
+Triple:
+```
+docker buildx create --use --name=dualcpu --config=./buildkitd-triple.toml
+```
+
+Quad:
+```
+docker buildx create --use --name=dualcpu --config=./buildkitd-quad.toml
+```
+
+Note: personally, I've had the most success running a single CPU build.
