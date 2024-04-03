@@ -1,0 +1,24 @@
+name: env-dev
+version: 0.0.1
+patches:
+  lms-env: |
+    SESSION_COOKIE_DOMAIN: "{{ BASE_DOMAIN }}"
+    SHARED_COOKIE_DOMAIN: "{{ BASE_DOMAIN }}"
+    SECURE_COOKIES: false
+    SESSION_COOKIE_SECURE: false
+    CSRF_COOKIE_SECURE: false
+    SESSION_COOKIE_SAMESITE: "Lax"
+  cms-env: |
+    SESSION_COOKIE_DOMAIN: "{{ BASE_DOMAIN }}"
+    SHARED_COOKIE_DOMAIN: "{{ BASE_DOMAIN }}"
+    SECURE_COOKIES: false
+    SESSION_COOKIE_SECURE: false
+    CSRF_COOKIE_SECURE: false
+    SESSION_COOKIE_SAMESITE: "Lax"
+  openedx-lms-development-settings: |
+    SESSION_COOKIE_DOMAIN="{{ BASE_DOMAIN }}"
+    SHARED_COOKIE_DOMAIN="{{ BASE_DOMAIN }}"
+    SECURE_COOKIES=False
+    SESSION_COOKIE_SECURE=False
+    CSRF_COOKIE_SECURE=False
+    SESSION_COOKIE_SAMESITE="Lax"
