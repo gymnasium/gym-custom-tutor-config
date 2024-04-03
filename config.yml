@@ -1,3 +1,4 @@
+BASE_DOMAIN: edly.io
 CAIRN_CLICKHOUSE_PASSWORD: eGUhQbWMRSKSrB6LJqPl
 CAIRN_POSTGRESQL_PASSWORD: KQY1VDAkTPKZz0bAi9J9
 CAIRN_SSO_CLIENT_SECRET: 7ojP8DylFPiJN83O46VL
@@ -7,8 +8,9 @@ CMS_OAUTH2_SECRET: 2icx54cdu9SJ77KMlZgHTWcm
 CONTACT_EMAIL: help@thegymnasium.com
 DOCKER_IMAGE_CADDY: docker.io/library/caddy:2.7.5
 DOCKER_IMAGE_OPENEDX: gymnasium/gym-theme-openedx:17.0.3
+DOCKER_IMAGE_OPENEDX_DEV: gymnasium/gym-theme-openedx-dev:17.0.3
 ENABLE_HTTPS: false
-ENABLE_WEB_PROXY: false
+ENABLE_WEB_PROXY: true
 FEATURES:
 - ENABLE_MKTG_SITE: true
 ID: jxBish2U54zbLTe82GMVvnyO
@@ -67,23 +69,22 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----'
 LANGUAGE_CODE: en
 LMS_HOST: local.edly.io
-MARKETING_SITE_BASE_URL: edly.io:8888
-MARKETING_SITE_ROOT: http://edly.io:8888
+MARKETING_SITE_BASE_URL: http://edly.io:8888
+MARKETING_SITE_ROOT: edly.io
 MFE_DOCKER_IMAGE: gymnasium/gym-theme-mfe:17.0.3
+MFE_DOCKER_IMAGE_DEV: gymnasium/gym-theme-mfe-dev:17.0.3
 MYSQL_ROOT_PASSWORD: 43Lfuln2
-OPENEDX_EXTRA_PIP_REQUIREMENTS:
-- git+https://github.com/gymnasium/gym-theme.git
-- git+https://github.com/raccoongang/xblock-video.git@master#egg=video_xblock
 OPENEDX_MYSQL_PASSWORD: 2waV0m9w
 OPENEDX_SECRET_KEY: eHqeglW5j7T68yYtr3yL6XPz
 PLATFORM_NAME: Gymnasium
 PLUGINS:
-- course-about-mfe-production
+- course-about-dev
 - custom
-- gym-cors
-- gym-mfe
+- env-dev
+- gym-caddy
 - gym-theme
 - mfe
+- mfe-custom
 - mfe-disable
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
