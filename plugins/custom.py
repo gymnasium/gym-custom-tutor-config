@@ -22,22 +22,6 @@ else:
 
 hooks.Filters.ENV_PATCHES.add_item(
     (
-"mfe-dockerfile-post-npm-install",
-"""
-ADD https://api.github.com/repos/gymnasium/gym-frontend-components/git/refs/heads/gym.quince.2 /tmp/gitref-frontend-components-v0
-
-ADD https://api.github.com/repos/gymnasium/brand-openedx/git/refs/heads/gym.quince.1 /tmp/gitref-brand
-
-RUN npm install '@edx/gym-frontend@git+https://git@github.com/gymnasium/gym-frontend-components.git#gym.quince.2' --registry=$NPM_REGISTRY
-
-RUN npm install '@edx/brand@git+https://git@github.com/gymnasium/brand-openedx.git#gym.quince.1' --registry=$NPM_REGISTRY
-"""
-    ),
-    priority=hooks.priorities.LOW
-)
-
-hooks.Filters.ENV_PATCHES.add_item(
-    (
 "mfe-lms-common-settings",
 f"""
 # Custom LMS Settings
