@@ -4,10 +4,13 @@
 - These instructions are currently specific to Mac OS.
 
 ## Prerequisites
-This proof-of-concept Tutor config depends on a separate marketing frontend running at `edly.io:8888`. See the [gym-eleventy](https://github.com/gymnasium/gym-eleventy) repo for specific instructions on running locally it using the netlify CLI.
+This proof-of-concept Tutor config depends on a separate marketing frontend running either locally at `edly.io:8888`, or remotely at a domain specified in the `.env` files. See the [gym-eleventy](https://github.com/gymnasium/gym-eleventy) repo for specific instructions on running locally it using the netlify CLI.
+
+## env variables
+The `.env` file in the project root folder is set with default values for running tutor locally. When running in a production environment, rename `.env.production.example` to `.env.production` and update the value(s) to match your production environment accordingly.
 
 ## Installation
-
+These instructions use direnv for convenience. If you'd rather create your own python virtualenv, the instructions will vary a bit.
 
 ### direnv
 1. Install direnv
@@ -63,32 +66,13 @@ The output should match the directory you're in.
 ```
 git init .
 git remote add origin https://github.com/gymnasium/gym-custom-tutor-config
-git pull origin gym.quince.1 --recurse-submodules
+git pull origin gym.quince.2 --recurse-submodules
 ```
 
-
-## Custom Tutor Initialization
-The following commands should be executed from the project root folder. Make sure your static site is running at port 8888.
-
-### Setup
-On first install, run the following to install packages for our customized Tutor:
+1. On first install, from the project root folder, run the following to install packages for our customized Tutor:
 ```
 git submodule update --init --recursive
 pip install -U -r requirements.txt
-```
-Install our custom plugins (from the project root)
-```
-pip install -e plugins/gym-theme
-```
-Then, enable the plugins:
-
-```
-tutor plugins enable gym-theme
-```
-
-Save the config again:
-```
-tutor config save
 ```
 
 ### Tutor Dev Mode
@@ -112,44 +96,75 @@ tutor images build learning-dev --no-cache --no-registry-cache
 tutor images build profile-dev --no-cache --no-registry-cache
 ```
 
-#### Bind Mounts
+#### Dev Mode Bind Mount Setup
+Add the following lines to your config.yml:
+
+```
+MOUNTS:
+- ./mfe/frontend-app-account
+- ./mfe/frontend-app-authn
+- ./mfe/frontend-app-course-about
+- ./mfe/frontend-app-learner-dashboard
+- ./mfe/frontend-app-learning
+- ./mfe/frontend-app-profile
+- account:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
+- authn:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
+- course-about:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
+- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
+- learning:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
+- profile:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
+
+```
+
+
 Since dev uses bind mounts in the config, you'll need to go to each MFE folder and run:
 ```
 nvm use
 npm install
 ```
 
-###n Start Tutor in Dev Mode
-Theoretically, you should be able to:
+### Start Tutor in Dev Mode
+Theoretically, you should be able to launch tutor in dev mode:
 ```
 tutor dev launch
 ```
 
-### Tutor Local Mode
+## Tutor Local "Production" Mode
 This is to run tutor in "production" mode.
 
-#### Instructions TBD/WIP:
+### 1. Running locally:
 
-Make sure eleventy is running in `tutor:local` mode: `npm run tutor:local`.
+Make sure 11ty is running locally in `tutor:local` mode: `npm run tutor:local`.
 
 
 Disable development course-about plugin:
 ```
-tutor plugins disable course-about-mfe
+tutor plugins disable course-about-dev
 ```
 
 Enable production course-about plugin:
 
 ```
-tutor plugins enable course-about-mfe-production
+tutor plugins enable course-about-prod
 ```
 
-
+Save your config again:
 ```
-tutor images build openedx --no-cache --no-registry-cache
-tutor images build mfe --no-cache --no-registry-cache
+tutor config save
 ```
 
+#### Build images on your local machine (not a production environment)
+This is assuming you're running 
+If you're building on an actual production server, use the next set of instructions instead.
+```
+tutor images build openedx mfe --no-cache --no-registry-cache --build-arg NODE_ENV='local' --build-arg MARKETING_SITE_BASE_URL='http://edly.io:8888' --build-arg SHARED_COOKIE_DOMAIN='edly.io' --build-arg SECURE_COOKIES=False
+```
+
+#### 2. Running an actual production environment
+Let's use `gym.soy` as our example.
+```
+tutor images build openedx mfe --no-cache --no-registry-cache --build-arg NODE_ENV='production' --build-arg MARKETING_SITE_BASE_URL='https://gym.soy' --build-arg SHARED_COOKIE_DOMAIN='gym.soy'
+```
 
 And then:
 
@@ -157,7 +172,7 @@ And then:
 tutor local launch
 ```
 
-## TODO: sort out more instructions:
+## Additional WIP instructions:
 
 ### Setting a theme
 This theme is set automatically via a shell script, but just in case, here is how to do it manually.
@@ -167,7 +182,7 @@ tutor local do settheme gym-theme
 
 ### Other commands
 
-Restart LMS:
+Restart LMS in tutor local mode:
 ```
 tutor dev restart openedx
 ```
@@ -202,53 +217,33 @@ tutor dev stop
 * Account: http://apps.local.edly.io:1997/account/
 * Authn: http://apps.local.edly.io:1999/authn/
 * Course About: http://apps.local.edly.io:3000/courses/{course-id}/about
+* Learner Dashboard: http://apps.local.edly.io:1996/learner-dashboard/ or http://local.edly.io:8000/dashboard/
 * Learning (Courseware): http://apps.local.edly.io:2000/learning/course/{course-id}/home
 * Profile: http://apps.local.edly.io:1995/profile/u/{username}
 
-### Tutor "Production" Endpoints:
+### Tutor Local "Production" Endpoints:
 
 * Marketing site: http://edly.io:8888
 * LMS: http://local.edly.io
 * Studio: http://studio.local.edly.io
 * Account: http://apps.local.edly.io/account/
-* Course About: http://apps.local.edly.io/courses/{course-id}/about
+* Authn: http://apps.local.edly.io/authn/
+* Course About: http://local.edly.io/courses/{course-id}/about
+* Learner Dashboard: http://apps.local.edly.io/learner-dashboard/ or http://local.edly.io/dashboard/
 * Learning (Courseware): http://apps.local.edly.io/learning/course/{course-id}/home
 * Profile: http://apps.local.edly.io/profile/u/{username}
 
 ## Add Admin User(s)
 
+Dev:
 ```
 tutor dev do createuser --staff --superuser admin admin@example.com
 ```
 
-## Running MFEs in Development Mode
-
-To run an MFE in development mode, you would need to clone it and to mount its directory
-
- Assuming you need to modify `frontend-app-account`.
-
-1. Clone it _if it's not already_ 
-2. from within the MFE directory, `npm install` _make sure you are on the correct node version `node --version` it shall match `cat .nvmrc`_
-3. from the tutor root directory, `tutor mounts add "./mfe/frontend-app-account"`. 
-
-### How do I override specific npm pks?
-
-The following is an example of overriding a header
-
-1. Clone it _if it's not already_
-1. `npm install` _make sure you are on the correct node version `node --version` it shall match `cat .nvmrc`_
-1. Mount the pkg to the container `tutor  mounts add "account:./mfe/frontend-component-header:/openedx/frontend-component-header"` scheme: `service:host_path:containter_path`
-1. Mount the `module.config.js` file, assuming it's `mfe/`, `tutor mounts add account:./mfe/module.config.js:/openedx/app/module.config.js`
-1. then run `npm install` _Note: in step 2 we run it inside header, now inside account mfe_
-1. Similar to adding the header we can also add other pkgs, like footer, brand, paragon...etc.
-
-## Building and runnning MFEs in production mode
-
-If you want to test the MFEs in a production like environment (e.g. the platform root page will be replaced by the Home MFE application) you can do so by running:
-
-    tutor images build mfe
-    tutor local start mfe caddy
-
+Local:
+```
+tutor local do createuser --staff --superuser admin admin@example.com
+```
 
 ## Reindex/backfill courses after importing them
 
@@ -263,7 +258,8 @@ tutor local run cms ./manage.py cms backfill_course_end_dates
 ## Docker Commands
 
 #### Prune Unused Images
-This is very useful when building tutor images.
+This is very useful when recovering from failed image builds.
+
 `docker buildx prune -f`
 
 
@@ -293,3 +289,5 @@ docker buildx create --use --name=dualcpu --config=./buildkitd-quad.toml
 ```
 
 Note: personally, I've had the most success running a single CPU build.
+
+**Note:** Sometimes `tutor images build` will fail due to network connectivity issues. If this happens, simply retry the command.
