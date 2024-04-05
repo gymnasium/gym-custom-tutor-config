@@ -1,3 +1,4 @@
+BASE_DOMAIN: edly.io
 CAIRN_CLICKHOUSE_PASSWORD: eGUhQbWMRSKSrB6LJqPl
 CAIRN_POSTGRESQL_PASSWORD: KQY1VDAkTPKZz0bAi9J9
 CAIRN_SSO_CLIENT_SECRET: 7ojP8DylFPiJN83O46VL
@@ -68,17 +69,16 @@ JWT_RSA_PRIVATE_KEY: '-----BEGIN RSA PRIVATE KEY-----
   -----END RSA PRIVATE KEY-----'
 LANGUAGE_CODE: en
 LMS_HOST: local.edly.io
+MARKETING_SITE_BASE_URL: http://edly.io:8888
 MFE_DOCKER_IMAGE: gymnasium/gym-theme-mfe:17.0.3
 MFE_DOCKER_IMAGE_DEV: gymnasium/gym-theme-mfe-dev:17.0.3
 MYSQL_ROOT_PASSWORD: 43Lfuln2
-OPENEDX_EXTRA_PIP_REQUIREMENTS:
-- git+https://github.com/gymnasium/gym-theme@gym.quince.2#egg=gym_theme
 OPENEDX_MYSQL_PASSWORD: 2waV0m9w
 OPENEDX_SECRET_KEY: eHqeglW5j7T68yYtr3yL6XPz
 PLATFORM_NAME: Gymnasium
 PLUGINS:
+- caddy-csp
 - course-about-prod
-- custom
 - gym-theme
 - mfe
 - mfe-disable
@@ -86,3 +86,5 @@ PLUGINS:
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
 PREVIEW_LMS_HOST: preview.local.edly.io
+SESSION_COOKIE_DOMAIN: BASE_DOMAIN
+SHARED_COOKIE_DOMAIN: BASE_DOMAIN
