@@ -1,0 +1,7 @@
+name: caddy-csp
+version: 0.0.1
+patches:
+  caddyfile-lms: |
+    header * {
+      Content-Security-Policy "frame-ancestors 'self' {{ LMS_HOST }} *.{{ LMS_HOST }} {{ BASE_DOMAIN }} *.{{ BASE_DOMAIN }} {{ MARKETING_SITE_BASE_URL }};"
+    }
