@@ -162,15 +162,19 @@ tutor images build mfe --no-cache --no-registry-cache
 ```
 
 #### 2. Running an actual production environment
-Let's use `gym.soy` as our example.
-```
-tutor images build openedx mfe --no-cache --no-registry-cache --build-arg NODE_ENV='production' --build-arg MARKETING_SITE_BASE_URL='https://gym.soy' --build-arg SHARED_COOKIE_DOMAIN='gym.soy'
-```
+Let's use `gym.soy` as our example.  Rename `.env.production.example` to `.env.production` and update the value(s) to match the `gym.soy` production environment accordingly.
 
-And then:
-
+On first launch:
 ```
+tutor images build openedx --no-cache --no-registry-cache
+tutor images build mfe --no-cache --no-registry-cache
 tutor local launch
+```
+
+On subsequent launches, start tutor in detached mode.
+
+```
+tutor local start -d
 ```
 
 ## Additional WIP instructions:
