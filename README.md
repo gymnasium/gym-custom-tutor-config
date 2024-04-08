@@ -157,7 +157,8 @@ tutor config save
 This is assuming you're running 
 If you're building on an actual production server, use the next set of instructions instead.
 ```
-tutor images build openedx mfe --no-cache --no-registry-cache --build-arg NODE_ENV='local' --build-arg BASE_DOMAIN='edly.io' --build-arg MARKETING_SITE_BASE_URL='http://edly.io:8888' --build-arg SHARED_COOKIE_DOMAIN='edly.io' --build-arg SESSION_COOKIE_DOMAIN='edly.io' --build-arg SECURE_COOKIES=False
+tutor images build openedx --no-cache --no-registry-cache
+tutor images build mfe --no-cache --no-registry-cache
 ```
 
 #### 2. Running an actual production environment
