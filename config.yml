@@ -83,6 +83,7 @@ PLUGINS:
 - mfe
 - mfe-disable
 - mfe-forks
+- shared-cookies
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
 PREVIEW_LMS_HOST: preview.local.edly.io
