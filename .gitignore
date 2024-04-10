@@ -14,3 +14,9 @@ env/
 
 # tvm folder
 .tvm
+
+.env.production
+.env.staging
+
+!.env.production.example
+!.env.staging.example
