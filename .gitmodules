@@ -29,7 +29,7 @@
 [submodule "mfe/frontend-app-profile"]
 	path = mfe/frontend-app-profile
 	url = https://github.com/gymnasium/frontend-app-profile.git
-	branch = gym.quince.1
+	branch = gym.quince.3
 [submodule "mfe/gym-frontend-components"]
 	path = mfe/gym-frontend-components
 	url = https://github.com/gymnasium/gym-frontend-components.git
