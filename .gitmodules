@@ -5,7 +5,7 @@
 [submodule "mfe/frontend-app-account"]
 	path = mfe/frontend-app-account
 	url = https://github.com/gymnasium/frontend-app-account.git
-	branch = gym.quince.1
+	branch = gym.quince.3
 [submodule "mfe/frontend-app-authn"]
 	path = mfe/frontend-app-authn
 	url = https://github.com/gymnasium/frontend-app-authn.git
