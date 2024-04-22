@@ -12,7 +12,7 @@ def mfe_forks(mfes):
     }
     mfes["authn"] = {
         "repository": "https://github.com/gymnasium/frontend-app-authn.git",
-        "version": "gym.quince.2",
+        "version": "gym.quince.3",
         "refs": "https://api.github.com/repos/gymnasium/frontend-app-authn/git/refs/heads",
         "port": 1999,
         "name": "authn",
