@@ -33,7 +33,7 @@ def mfe_forks(mfes):
     # }
     mfes["learner-dashboard"] = {
         "repository": "https://github.com/gymnasium/frontend-app-learner-dashboard.git",
-        "version": "gym.quince.2",
+        "version": "gym.quince.3",
         "refs": "https://api.github.com/repos/gymnasium/frontend-app-learner-dashboard/git/refs/heads",
         "port":1996,
         "name": "learner-dashboard",

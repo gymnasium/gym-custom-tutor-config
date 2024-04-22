@@ -21,7 +21,7 @@
 [submodule "mfe/frontend-app-learner-dashboard"]
 	path = mfe/frontend-app-learner-dashboard
 	url = https://github.com/gymnasium/frontend-app-learner-dashboard.git
-	branch = gym.quince.2
+	branch = gym.quince.3
 [submodule "mfe/frontend-app-learning"]
 	path = mfe/frontend-app-learning
 	url = https://github.com/gymnasium/frontend-app-learning.git
