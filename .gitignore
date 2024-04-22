@@ -1,5 +1,6 @@
 volumes
 data
+node_modules
 
 # XXX: I wish there would be an easies way without too many asterisks
 
@@ -20,3 +21,5 @@ env/
 
 !.env.production.example
 !.env.staging.example
+
+*.temp
