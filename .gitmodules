@@ -33,7 +33,7 @@
 [submodule "mfe/gym-frontend-components"]
 	path = mfe/gym-frontend-components
 	url = https://github.com/gymnasium/gym-frontend-components.git
-	branch = gym.quince.2
+	branch = main
 [submodule "plugins/gym-theme"]
 	path = plugins/gym-theme
 	url = https://github.com/gymnasium/gym-theme
