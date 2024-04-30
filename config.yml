@@ -10,7 +10,7 @@ DOCKER_IMAGE_CADDY: docker.io/library/caddy:2.7.5
 DOCKER_IMAGE_OPENEDX: gymnasium/gym-theme-openedx:17.0.3
 DOCKER_IMAGE_OPENEDX_DEV: gymnasium/gym-theme-openedx-dev:17.0.3
 ENABLE_HTTPS: false
-ENABLE_WEB_PROXY: true
+ENABLE_WEB_PROXY: false
 FEATURES:
 - ENABLE_MKTG_SITE: true
 ID: jxBish2U54zbLTe82GMVvnyO
@@ -72,13 +72,18 @@ LMS_HOST: local.edly.io
 MARKETING_SITE_BASE_URL: http://edly.io:8888
 MFE_DOCKER_IMAGE: gymnasium/gym-theme-mfe:17.0.3
 MFE_DOCKER_IMAGE_DEV: gymnasium/gym-theme-mfe-dev:17.0.3
+MOUNTS:
+- ./mfe/frontend-app-authn
+- authn:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- authn:./mfe/module.config.js:/openedx/app/module.config.js
 MYSQL_ROOT_PASSWORD: 43Lfuln2
 OPENEDX_MYSQL_PASSWORD: 2waV0m9w
 OPENEDX_SECRET_KEY: eHqeglW5j7T68yYtr3yL6XPz
 PLATFORM_NAME: Gymnasium
 PLUGINS:
 - caddy-csp
-- course-about-prod
+- course-about-dev
+- forum
 - gym-theme
 - mfe
 - mfe-disable
@@ -87,5 +92,5 @@ PLUGINS:
 PLUGIN_INDEXES:
 - https://overhang.io/tutor/main
 PREVIEW_LMS_HOST: preview.local.edly.io
-SESSION_COOKIE_DOMAIN: BASE_DOMAIN
-SHARED_COOKIE_DOMAIN: BASE_DOMAIN
+SESSION_COOKIE_DOMAIN: edly.io
+SHARED_COOKIE_DOMAIN: edly.io

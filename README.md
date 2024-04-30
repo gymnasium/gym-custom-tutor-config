@@ -37,7 +37,7 @@ tvm install v17.0.3
 mkdir ~/tutor
 ```
 
-## Once per TVM project
+### Once per TVM project
 
 1. Create a new TVM project
 Please note the project title cannot include periods, lest TVM puke. In this case, TVM will automatically create a new directory for you.
@@ -51,6 +51,9 @@ cd quince_2
 ```
 
 1. Activate the environment:
+You'll need to do this each time you spawn the root directory in your terminal.
+
+In the root directory, type the following. If you're also using `direnv` you may be prompted to give it permissions to access the folder.
 ```
 source .tvm/bin/activate
 ```
@@ -69,23 +72,115 @@ git remote add origin https://github.com/gymnasium/gym-custom-tutor-config
 git pull origin gym.quince.2 --recurse-submodules
 ```
 
-1. On first install, from the project root folder, run the following to install packages for our customized Tutor:
+1. On first install only run the following in the root folder to install packages for our customized Tutor:
 ```
 git submodule update --init --recursive
 pip install -U -r requirements.txt
 ```
 
-### Tutor Dev Mode
+1. Check to make sure the env variables are set properly for your enviroment
+```
+python -m dotenv list
+```
+If you don't see the following set properly, be sure to update the .env file accordingly.
 
-Then to run in dev mode, make sure 11ty is running in `local` mode: `npm run local`, and available at `http://edly.io:8888`.
+```
+BASE_DOMAIN=yourdomain
+MARKETING_SITE_BASE_URL=http(s)://yourdomain
+SESSION_COOKIE_DOMAIN=yourdomain
+SHARED_COOKIE_DOMAIN=yourdomain
+```
+
+1. Run Tutor once without some plugins enabled to make sure you can get it up and running, and to add site configs.
+
+Check your active plugins by running `tutor plugins list` and make sure only the following are active:
+
+```
+- forum
+- gym-theme
+- mfe
+- mfe-disable
+```
+
+
+Startup your tutor in local mode.
+```
+tutor local launch
+```
+
+Once it's running, create a superuser login for yourself, login to `local.edly.io/admin` and go to Site Configurations. Edit the config called `local.edly.io` to include the following:
+
+```
+{
+    "ENABLE_PROFILE_MICROFRONTEND": "true",
+    "ACCESS_TOKEN_COOKIE_NAME": "edx-jwt-cookie-header-payload",
+    "BASE_URL": "http://edly.io:8888",
+    "CMS_HOST": "studio.local.edly.io",
+    "COLLECT_YEAR_OF_BIRTH":"false",
+    "CONTACT_URL":"http://edly.io:8888/support/",
+    "CSRF_TOKEN_API_PATH": "/csrf/api/v1/token",
+    "DATA_API_BASE_URL":"http://local.edly.io",
+    "ENABLE_ACCOUNT_DELETION": "",
+    "ENABLE_COPPA_COMPLIANCE": "",
+    "ENABLE_DEMOGRAPHICS_COLLECTION": "",
+    "ENABLE_DOB_UPDATE": "",
+    "ENABLE_EDX_PERSONAL_DASHBOARD": "false",
+    "ENABLE_JUMPNAV": "false",
+    "FAVICON_URL": "http://edly.io:8888/favicon.svg",
+    "INFO_EMAIL": "help@thegymnasium.com",
+    "LANGUAGE_PREFERENCE_COOKIE_NAME": "openedx-language-preference",
+    "LMS_BASE_URL": "http://local.edly.io",
+    "LOGIN_ISSUE_SUPPORT_LINK": "http://edly.io:8888/support/",
+    "LOGIN_URL": "http://local.edly.io/login",
+    "LOGOUT_URL": "http://local.edly.io/logout",
+    "LOGO_TRADEMARK_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
+    "LOGO_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
+    "LOGO_WHITE_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
+    "MARKETING_EMAILS_OPT_IN": "",
+    "MARKETING_SITE_BASE_URL": "http://edly.io:8888",
+    "MFE_CONFIG_API_URL": "http://local.edly.io/api/mfe_config/v1",
+    "NODE_ENV": "production",
+    "PASSWORD_RESET_SUPPORT_LINK": "mailto:help@thegymnasium.com",
+    "PRIVACY_POLICY": "http://edly.io:8888/privacy-policy/",
+    "REFRESH_ACCESS_TOKEN_ENDPOINT": "http://local.edly.io/login_refresh",
+    "SEARCH_CATALOG_URL":"http://edly.io:8888/courses/",
+    "SECURE_COOKIES": "true",
+    "SEGMENT_KEY": "",
+    "site_domain": "edly.io",
+    "SITE_NAME": "Gymnasium",
+    "STUDIO_BASE_URL": "http://studio.local.edly.io",
+    "SUPPORT_URL": "http://edly.io:8888/support/",
+    "SUPPORT_URL_TO_UNLINK_SOCIAL_MEDIA_ACCOUNT": "http://edly.io:8888/support/",
+    "SESSION_COOKIE_DOMAIN": "edly.io",
+    "SHARED_COOKIE_DOMAIN": "edly.io",
+    "TOS_AND_HONOR_CODE": "http://edly.io:8888",
+    "TOS_LINK": "http://edly.io:8888",
+    "USER_INFO_COOKIE_NAME": "edx-user-info"
+}
+```
+Note: some of the above may be overkill. We will likely be able to get away with fewer configs, TBD.
+
+Save the config and stop tutor: `tutor local stop`.
+
+1. Activate the remaining plugins:
+`tutor plugins enable caddy-csp course-about-dev mfe-forks shared-cookies`
+
+## Tutor Dev Mode
+
+Then to run in dev mode, make sure 11ty is running in `dev:tutor` mode: `npm run dev:tutor`, and available at `http://edly.io:8888`.
 
 ```
 tutor config save
 ```
 
-Build dev images
+
+### Build dev images (choose individual images to build)
+Build the dev images one by on
 ```
 tutor images build openedx-dev --no-cache --no-registry-cache
+```
+
+```
 tutor images build account-dev --no-cache --no-registry-cache
 tutor images build authn-dev --no-cache --no-registry-cache
 tutor images build course-about-dev --no-cache --no-registry-cache
@@ -97,55 +192,87 @@ tutor images build profile-dev --no-cache --no-registry-cache
 ```
 
 #### Dev Mode Bind Mount Setup
-Add the following lines to your config.yml:
+Using bind mounts is essential when developing MFEs. Use the examples below to populate your `config.yml` file.
 
+#### Account-specific bind mounts
 ```
 MOUNTS:
 - ./mfe/frontend-app-account
-- ./mfe/frontend-app-authn
-- ./mfe/frontend-app-course-about
-- ./mfe/frontend-app-learner-dashboard
-- ./mfe/frontend-app-learning
-- ./mfe/frontend-app-profile
-- account:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
-- authn:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
-- course-about:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
-- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
-- learning:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
-- profile:./mfe/gym-frontend-components:/openedx/app/node_modules/@edx/gym-frontend
-
+- account:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- account:./mfe/module.config.js:/openedx/app/module.config.js
 ```
 
+#### Authn-specific bind mounts
+```
+MOUNTS:
+- ./mfe/frontend-app-authn
+- authn:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- authn:./mfe/module.config.js:/openedx/app/module.config.js
+```
 
-Since dev uses bind mounts in the config, you'll need to go to each MFE folder and run:
+#### Course About-specific bind mounts
+```
+MOUNTS:
+- ./mfe/frontend-app-course-about
+- course-about:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- course-about:./mfe/module.config.js:/openedx/app/module.config.js
+```
+
+#### Discussions-specific bind mounts
+```
+MOUNTS:
+- ./mfe/frontend-app-discussions
+- discussions:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- discussions:./mfe/module.config.js:/openedx/app/module.config.js
+```
+
+#### Learner Dashboard-specific bind mounts
+```
+MOUNTS:
+- ./mfe/frontend-app-learner-dashboard
+- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- learner-dashboard:./mfe/module.config.js:/openedx/app/module.config.js
+```
+
+#### Learning bind mounts
+```
+MOUNTS:
+- ./mfe/frontend-app-learning
+- learning:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- learning:./mfe/module.config.js:/openedx/app/module.config.js
+```
+
+#### Profile bind mounts
+```
+MOUNTS:
+- ./mfe/frontend-app-profile
+- profile:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- profile:./mfe/module.config.js:/openedx/app/module.config.js
+```
+
+When using bind mounts, you'll need to go to the corresponding MFE folder and run:
 ```
 nvm use
 npm install
 ```
 
-### Start Tutor in Dev Mode
+## Start Tutor in Dev Mode
 Theoretically, you should be able to launch tutor in dev mode:
 ```
 tutor dev launch
 ```
-
+---
 ## Tutor Local "Production" Mode
-This is to run tutor in "production" mode.
+Run tutor in emulated "production" mode (do not enable SSL if you're on your local machine).
 
-### 1. Running locally:
+### 1. Running in "local" mode on your local machine:
 
-Make sure 11ty is running locally in `tutor:local` mode: `npm run tutor:local`.
+Make sure 11ty is running locally in `local:tutor` mode: `npm run local:tutor`.
 
 
-Disable development course-about plugin:
+Disable development plugins, enable production plugins:
 ```
-tutor plugins disable course-about-dev
-```
-
-Enable production course-about plugin:
-
-```
-tutor plugins enable course-about-prod
+tutor plugins disable course-about-dev; tutor plugins enable course-about-prod
 ```
 
 Save your config again:
@@ -153,23 +280,25 @@ Save your config again:
 tutor config save
 ```
 
-#### Build images on your local machine (not a production environment)
-This is assuming you're running 
-If you're building on an actual production server, use the next set of instructions instead.
+1. Build images
 ```
-tutor images build openedx --no-cache --no-registry-cache
-tutor images build mfe --no-cache --no-registry-cache
+tutor images build openedx mfe
+
 ```
+If you have issues, you could try the command above with the ` --no-cache --no-registry-cache` flags.
+
 
 #### 2. Running an actual production environment
 Let's use `gym.soy` as our example.  Rename `.env.production.example` to `.env.production` and update the value(s) to match the `gym.soy` production environment accordingly.
 
-On first launch:
+1. On first launch:
 ```
 tutor images build openedx --no-cache --no-registry-cache
 tutor images build mfe --no-cache --no-registry-cache
 tutor local launch
 ```
+
+If the image fails to build, run the command again without the flags, and it will pick up from where it left off: `tutor images build openedx` or `tutor images build mfe`
 
 On subsequent launches, start tutor in detached mode.
 
@@ -189,7 +318,7 @@ tutor local do settheme gym-theme
 
 Restart LMS in tutor local mode:
 ```
-tutor dev restart openedx
+tutor local restart openedx
 ```
 
 Restart specific MFEs in tutor dev mode:
@@ -210,7 +339,7 @@ tutor dev launch
 Start/stop services with:
 
 ```
-tutor dev start
+tutor dev start -d
 tutor dev stop
 ```
 
@@ -250,6 +379,8 @@ Local:
 tutor local do createuser --staff --superuser admin admin@example.com
 ```
 
+# Troubleshooting
+
 ## Reindex/backfill courses after importing them
 
 ```
@@ -259,18 +390,37 @@ tutor local run cms ./manage.py cms backfill_course_tabs
 tutor local run cms ./manage.py cms backfill_course_end_dates
 ```
 
+## Migrations
+`manage.py makemigrations` (make new migrations)
+`manage.py migrate` (apply migrations)
+
+## Verbose Output During Image Builds
+- `tutor images build mfe --docker-arg --progress=plain`
 
 ## Docker Commands
 
-#### Prune Unused Images
-This is very useful when recovering from failed image builds.
-
+### Removing build cache:
 `docker buildx prune -f`
 
+### Clear entire docker system:
+`docker system prune -f`
 
-# Troubleshooting
+### Prune only build cache:
+`docker builder prune`
 
-### Failed builds
+### Prune images not associated with container:
+`docker image prune -a`
+
+### Remove dangling images:
+`docker image prune -f`
+
+### Remove all images (including ones tagged or associated with a container):
+`docker image prune -a -f`
+
+### Show unused containers:
+`docker ps --filter status=exited --filter status=dead -q`
+
+## Parallelism
 Docker's default is to utilize all available CPUs in parallel, and this can often cause the MFE image builds to fail. In this event, you can run the following command to limit builds to 1 CPU.
 
 ```
