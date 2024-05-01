@@ -105,7 +105,7 @@ Startup your tutor in dev mode.
 tutor dev launch
 ```
 
-Once it's running, create a superuser login for yourself
+Once it's running, create a superuser login for yourself and proceed with the customizations: `tutor dev do createuser --staff --superuser admin admin@example.com`
 
 #### Continue with the customizations
 
@@ -119,7 +119,7 @@ tutor config save
 `tutor plugins enable caddy-csp course-about-dev gym-theme mfe-disable mfe-forks shared-cookies`
 
 ## Tutor Dev Mode
-For local development, it's best to run tutor in dev mode.
+For development, it's best to run tutor in dev mode instead of local mode.
 
 Make sure 11ty is running in `dev:tutor` mode: `npm run dev:tutor`, and available at `http://edly.io:8888`.
 
