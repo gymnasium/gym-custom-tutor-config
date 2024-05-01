@@ -1,8 +1,4 @@
 BASE_DOMAIN: edly.io
-CAIRN_CLICKHOUSE_PASSWORD: eGUhQbWMRSKSrB6LJqPl
-CAIRN_POSTGRESQL_PASSWORD: KQY1VDAkTPKZz0bAi9J9
-CAIRN_SSO_CLIENT_SECRET: 7ojP8DylFPiJN83O46VL
-CAIRN_SUPERSET_SECRET_KEY: WcbX8dsobUWH5zOgHDz4
 CMS_HOST: studio.local.edly.io
 CMS_OAUTH2_SECRET: 2icx54cdu9SJ77KMlZgHTWcm
 CONTACT_EMAIL: help@thegymnasium.com
@@ -76,6 +72,9 @@ MOUNTS:
 - ./mfe/frontend-app-authn
 - authn:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
 - authn:./mfe/module.config.js:/openedx/app/module.config.js
+- ./mfe/frontend-app-course-about
+- course-about:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- course-about:./mfe/module.config.js:/openedx/app/module.config.js
 MYSQL_ROOT_PASSWORD: 43Lfuln2
 OPENEDX_MYSQL_PASSWORD: 2waV0m9w
 OPENEDX_SECRET_KEY: eHqeglW5j7T68yYtr3yL6XPz
