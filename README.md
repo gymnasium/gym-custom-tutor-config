@@ -21,36 +21,36 @@ brew install direnv
 Be sure to add the relevant hook to your shell: https://direnv.net/docs/hook.html
 
 ### TVM (Tutor Version Manager)
-1. Install [Tutor Version Manager](https://github.com/eduNEXT/tvm)
+- Install [Tutor Version Manager](https://github.com/eduNEXT/tvm)
 ```
 pip install git+https://github.com/eduNEXT/tvm.git
 ```
 
-1. Install the Tutor version you wish to use.
+- Install the Tutor version you wish to use.
 ```
 tvm install v17.0.3
 ```
 
 
-1. Create a main directory to house your tutor configs (for example `your-home folder/dev/tutor/`), ideally one that you can find easily via CLI. 
+- Create a main directory to house your tutor configs (for example `your-home folder/dev/tutor/`), ideally one that you can find easily via CLI. 
 ```
 mkdir ~/tutor
 ```
 
 ### Once per TVM project
 
-1. Create a new TVM project
+- Create a new TVM project
 Please note the project title cannot include periods, lest TVM puke. In this case, TVM will automatically create a new directory for you.
 ```
 tvm project init quince_2 v17.0.3
 ```
 
-1. enter the directory:
+- enter the directory:
 ```
 cd quince_2
 ```
 
-1. Activate the environment:
+- Activate the environment:
 You'll need to do this each time you spawn the root directory in your terminal.
 
 In the root directory, type the following. If you're also using `direnv` you may be prompted to give it permissions to access the folder.
@@ -97,104 +97,57 @@ Check your active plugins by running `tutor plugins list` and make sure only the
 
 ```
 - forum
-- gym-theme
 - mfe
-- mfe-disable
 ```
 
-Build the initial images:
+Startup your tutor in dev mode.
 ```
-tutor images build openedx mfe
-```
-
-
-Startup your tutor in local mode.
-```
-tutor local launch
+tutor dev launch
 ```
 
-Once it's running, create a superuser login for yourself, login to `local.edly.io/admin` and go to Site Configurations. Edit the config called `local.edly.io` to include the following:
+Once it's running, create a superuser login for yourself
 
+#### Continue with the customizations
+
+- Update the tutor config with the Gymnasium customizations:
 ```
-{
-    "ENABLE_PROFILE_MICROFRONTEND": "true",
-    "ACCESS_TOKEN_COOKIE_NAME": "edx-jwt-cookie-header-payload",
-    "BASE_URL": "http://edly.io:8888",
-    "CMS_HOST": "studio.local.edly.io",
-    "COLLECT_YEAR_OF_BIRTH":"false",
-    "CONTACT_URL":"http://edly.io:8888/support/",
-    "CSRF_TOKEN_API_PATH": "/csrf/api/v1/token",
-    "DATA_API_BASE_URL":"http://local.edly.io",
-    "ENABLE_ACCOUNT_DELETION": "",
-    "ENABLE_COPPA_COMPLIANCE": "",
-    "ENABLE_DEMOGRAPHICS_COLLECTION": "",
-    "ENABLE_DOB_UPDATE": "",
-    "ENABLE_EDX_PERSONAL_DASHBOARD": "false",
-    "ENABLE_JUMPNAV": "false",
-    "FAVICON_URL": "http://edly.io:8888/favicon.svg",
-    "INFO_EMAIL": "help@thegymnasium.com",
-    "LANGUAGE_PREFERENCE_COOKIE_NAME": "openedx-language-preference",
-    "LMS_BASE_URL": "http://local.edly.io",
-    "LOGIN_ISSUE_SUPPORT_LINK": "http://edly.io:8888/support/",
-    "LOGIN_URL": "http://local.edly.io/login",
-    "LOGOUT_URL": "http://local.edly.io/logout",
-    "LOGO_TRADEMARK_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
-    "LOGO_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
-    "LOGO_WHITE_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
-    "MARKETING_EMAILS_OPT_IN": "",
-    "MARKETING_SITE_BASE_URL": "http://edly.io:8888",
-    "MFE_CONFIG_API_URL": "http://local.edly.io/api/mfe_config/v1",
-    "NODE_ENV": "production",
-    "PASSWORD_RESET_SUPPORT_LINK": "mailto:help@thegymnasium.com",
-    "PRIVACY_POLICY": "http://edly.io:8888/privacy-policy/",
-    "REFRESH_ACCESS_TOKEN_ENDPOINT": "http://local.edly.io/login_refresh",
-    "SEARCH_CATALOG_URL":"http://edly.io:8888/courses/",
-    "SECURE_COOKIES": "true",
-    "SEGMENT_KEY": "",
-    "site_domain": "edly.io",
-    "SITE_NAME": "Gymnasium",
-    "STUDIO_BASE_URL": "http://studio.local.edly.io",
-    "SUPPORT_URL": "http://edly.io:8888/support/",
-    "SUPPORT_URL_TO_UNLINK_SOCIAL_MEDIA_ACCOUNT": "http://edly.io:8888/support/",
-    "SESSION_COOKIE_DOMAIN": "edly.io",
-    "SHARED_COOKIE_DOMAIN": "edly.io",
-    "TOS_AND_HONOR_CODE": "http://edly.io:8888",
-    "TOS_LINK": "http://edly.io:8888",
-    "USER_INFO_COOKIE_NAME": "edx-user-info"
-}
-```
-Note: some of the above may be overkill. We will likely be able to get away with fewer configs, TBD.
-
-Save the config and stop tutor: `tutor local stop`.
-
-1. Activate the remaining plugins:
-`tutor plugins enable caddy-csp course-about-dev mfe-forks shared-cookies`
-
-## Tutor Dev Mode
-
-Then to run in dev mode, make sure 11ty is running in `dev:tutor` mode: `npm run dev:tutor`, and available at `http://edly.io:8888`.
-
-```
+cat config-custom.yml >> config.yml
 tutor config save
 ```
 
+- Activate the remaining plugins:
+`tutor plugins enable caddy-csp course-about-dev gym-theme mfe-disable mfe-forks shared-cookies`
 
-### Build dev images (choose individual images to build)
-Build the dev images one by on
+## Tutor Dev Mode
+For local development, it's best to run tutor in dev mode.
+
+Make sure 11ty is running in `dev:tutor` mode: `npm run dev:tutor`, and available at `http://edly.io:8888`.
+
+### Build dev images
+Build all the dev images:
 ```
-tutor images build openedx-dev --no-cache --no-registry-cache
+tutor images build openedx-dev account-dev authn-dev course-about-dev discussions-dev learner-dashboard-dev learning-dev profile-dev
 ```
 
+If you run into trouble, you can try building each image individually. 
+
+openedx:
 ```
-tutor images build account-dev --no-cache --no-registry-cache
-tutor images build authn-dev --no-cache --no-registry-cache
-tutor images build course-about-dev --no-cache --no-registry-cache
-tutor images build course-authoring-dev --no-cache --no-registry-cache
-tutor images build discussions-dev --no-cache --no-registry-cache
-tutor images build learner-dashboard-dev --no-cache --no-registry-cache
-tutor images build learning-dev --no-cache --no-registry-cache
-tutor images build profile-dev --no-cache --no-registry-cache
+tutor images build openedx-dev
 ```
+
+mfes:
+```
+tutor images build account-dev
+tutor images build authn-dev
+tutor images build course-about-dev
+tutor images build discussions-dev
+tutor images build learner-dashboard-dev
+tutor images build learning-dev
+tutor images build profile-dev
+```
+
+If something fails, see the troubleshooting area below.
 
 #### Dev Mode Bind Mount Setup
 Using bind mounts is essential when developing MFEs. Use the examples below to populate your `config.yml` file.
@@ -270,6 +223,61 @@ tutor dev launch
 ## Tutor Local "Production" Mode
 Run tutor in emulated "production" mode (do not enable SSL if you're on your local machine).
 
+## Local Mode
+Before running Tutor in local mode, have your dev instance running. Login to the site admin using your superuser: `local.edly.io:8000/admin` and go to Site Configurations. Edit the config called `local.edly.io` to include the following:
+
+```
+{
+    "ENABLE_PROFILE_MICROFRONTEND": "true",
+    "ACCESS_TOKEN_COOKIE_NAME": "edx-jwt-cookie-header-payload",
+    "BASE_URL": "http://edly.io:8888",
+    "CMS_HOST": "studio.local.edly.io",
+    "COLLECT_YEAR_OF_BIRTH":"false",
+    "CONTACT_URL":"http://edly.io:8888/support/",
+    "CSRF_TOKEN_API_PATH": "/csrf/api/v1/token",
+    "DATA_API_BASE_URL":"http://local.edly.io",
+    "ENABLE_ACCOUNT_DELETION": "",
+    "ENABLE_COPPA_COMPLIANCE": "",
+    "ENABLE_DEMOGRAPHICS_COLLECTION": "",
+    "ENABLE_DOB_UPDATE": "",
+    "ENABLE_EDX_PERSONAL_DASHBOARD": "false",
+    "ENABLE_JUMPNAV": "false",
+    "FAVICON_URL": "http://edly.io:8888/favicon.svg",
+    "INFO_EMAIL": "help@thegymnasium.com",
+    "LANGUAGE_PREFERENCE_COOKIE_NAME": "openedx-language-preference",
+    "LMS_BASE_URL": "http://local.edly.io",
+    "LOGIN_ISSUE_SUPPORT_LINK": "http://edly.io:8888/support/",
+    "LOGIN_URL": "http://local.edly.io/login",
+    "LOGOUT_URL": "http://local.edly.io/logout",
+    "LOGO_TRADEMARK_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
+    "LOGO_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
+    "LOGO_WHITE_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
+    "MARKETING_EMAILS_OPT_IN": "",
+    "MARKETING_SITE_BASE_URL": "http://edly.io:8888",
+    "MFE_CONFIG_API_URL": "http://local.edly.io/api/mfe_config/v1",
+    "NODE_ENV": "production",
+    "PASSWORD_RESET_SUPPORT_LINK": "mailto:help@thegymnasium.com",
+    "PRIVACY_POLICY": "http://edly.io:8888/privacy-policy/",
+    "REFRESH_ACCESS_TOKEN_ENDPOINT": "http://local.edly.io/login_refresh",
+    "SEARCH_CATALOG_URL":"http://edly.io:8888/courses/",
+    "SECURE_COOKIES": "true",
+    "SEGMENT_KEY": "",
+    "site_domain": "edly.io",
+    "SITE_NAME": "Gymnasium",
+    "STUDIO_BASE_URL": "http://studio.local.edly.io",
+    "SUPPORT_URL": "http://edly.io:8888/support/",
+    "SUPPORT_URL_TO_UNLINK_SOCIAL_MEDIA_ACCOUNT": "http://edly.io:8888/support/",
+    "SESSION_COOKIE_DOMAIN": "edly.io",
+    "SHARED_COOKIE_DOMAIN": "edly.io",
+    "TOS_AND_HONOR_CODE": "http://edly.io:8888",
+    "TOS_LINK": "http://edly.io:8888",
+    "USER_INFO_COOKIE_NAME": "edx-user-info"
+}
+```
+Note: some of the above may be overkill. We will likely be able to get away with fewer configs, TBD.
+
+Stop dev tutor: `tutor dev stop`
+
 ### 1. Running in "local" mode on your local machine:
 
 Make sure 11ty is running locally in `local:tutor` mode: `npm run local:tutor`.
@@ -291,6 +299,9 @@ tutor images build openedx mfe
 
 ```
 If you have issues, you could try the command above with the ` --no-cache --no-registry-cache` flags.
+
+Start tutor in local mode:
+`tutor local launch`
 
 
 #### 2. Running an actual production environment
