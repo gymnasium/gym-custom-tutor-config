@@ -1,0 +1,33 @@
+BASE_DOMAIN: edly.io
+CMS_HOST: studio.local.edly.io
+CONTACT_EMAIL: help@thegymnasium.com
+DOCKER_IMAGE_OPENEDX: gymnasium/gym-theme-openedx:17.0.3
+DOCKER_IMAGE_OPENEDX_DEV: gymnasium/gym-theme-openedx-dev:17.0.3
+ENABLE_HTTPS: false
+ENABLE_WEB_PROXY: false
+FEATURES:
+- ENABLE_MKTG_SITE: true
+LMS_HOST: local.edly.io
+MARKETING_SITE_BASE_URL: http://edly.io:8888
+MFE_DOCKER_IMAGE: gymnasium/gym-theme-mfe:17.0.3
+MFE_DOCKER_IMAGE_DEV: gymnasium/gym-theme-mfe-dev:17.0.3
+MOUNTS:
+- ./mfe/frontend-app-authn
+- authn:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- authn:./mfe/module.config.js:/openedx/app/module.config.js
+- ./mfe/frontend-app-course-about
+- course-about:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- course-about:./mfe/module.config.js:/openedx/app/module.config.js
+PLATFORM_NAME: Gymnasium
+PLUGINS:
+- caddy-csp
+- course-about-dev
+- forum
+- gym-theme
+- mfe
+- mfe-disable
+- mfe-forks
+- shared-cookies
+PREVIEW_LMS_HOST: preview.local.edly.io
+SESSION_COOKIE_DOMAIN: edly.io
+SHARED_COOKIE_DOMAIN: edly.io
