@@ -102,6 +102,11 @@ Check your active plugins by running `tutor plugins list` and make sure only the
 - mfe-disable
 ```
 
+Build the initial images:
+```
+tutor images build openedx mfe
+```
+
 
 Startup your tutor in local mode.
 ```
@@ -280,7 +285,7 @@ Save your config again:
 tutor config save
 ```
 
-1. Build images
+1. (Re)Build Images
 ```
 tutor images build openedx mfe
 
