@@ -38,3 +38,7 @@
 	path = plugins/gym-theme
 	url = https://github.com/gymnasium/gym-theme
 	branch = gym.quince.2
+[submodule "plugins/custom-reg-form"]
+	path = plugins/custom-reg-form
+	url = https://github.com/gymnasium/custom_registration_form.git
+	branch = feat/quince
