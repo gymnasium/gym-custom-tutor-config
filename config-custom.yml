@@ -18,6 +18,11 @@ MOUNTS:
 - ./mfe/frontend-app-course-about
 - course-about:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
 - course-about:./mfe/module.config.js:/openedx/app/module.config.js
+- ./mfe/frontend-app-learner-dashboard
+- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- learner-dashboard:./mfe/module.config.js:/openedx/app/module.config.js
+OPENEDX_EXTRA_PIP_REQUIREMENTS:
+- git+https://github.com/gymnasium/custom_registration_form@feat/quince#egg=custom_reg_form
 PLATFORM_NAME: Gymnasium
 PLUGINS:
 - caddy-csp
