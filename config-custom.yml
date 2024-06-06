@@ -27,6 +27,7 @@ PLATFORM_NAME: Gymnasium
 PLUGINS:
 - caddy-csp
 - course-about-dev
+- custom-reg-form
 - forum
 - gym-theme
 - mfe
