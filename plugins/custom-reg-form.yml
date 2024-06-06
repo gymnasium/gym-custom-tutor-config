@@ -1,0 +1,15 @@
+name: custom-reg-form
+version: 0.0.1
+patches:
+  cms-env: |
+    ENABLE_COMBINED_LOGIN_REGISTRATION: true
+  lms-env: |
+    ADDL_INSTALLED_APPS:
+      - custom_reg_form
+    ENABLE_COMBINED_LOGIN_REGISTRATION: true
+    REGISTRATION_EXTENSION_FORM: "custom_reg_form.forms.ExtraInfoForm"
+    ENABLE_DYNAMIC_REGISTRATION_FIELDS: true
+    REGISTRATION_EXTRA_FIELDS:
+      market: "required"
+    extended_profile_fields:
+      - market
