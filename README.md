@@ -427,7 +427,7 @@ tutor local run cms ./manage.py cms backfill_course_end_dates
 ### Prune images not associated with container:
 `docker image prune -a`
 
-### Remove dangling images:
+### Remove dangling build cache/images:
 `docker image prune -f`
 
 ### Remove all images (including ones tagged or associated with a container):
