@@ -1,4 +1,4 @@
-BASE_DOMAIN: edly.io
+BASE_DOMAIN: ${ BASE_DOMAIN }
 CMS_HOST: studio.local.edly.io
 CONTACT_EMAIL: help@thegymnasium.com
 DOCKER_IMAGE_OPENEDX: "gymnasium/gym-theme-openedx:{{ TUTOR_VERSION }}"
@@ -8,7 +8,7 @@ ENABLE_WEB_PROXY: false
 FEATURES:
 - ENABLE_MKTG_SITE: true
 LMS_HOST: local.edly.io
-MARKETING_SITE_BASE_URL: http://edly.io:8888
+MARKETING_SITE_BASE_URL: ${ MARKETING_SITE_BASE_URL }
 MFE_DOCKER_IMAGE: "gymnasium/gym-theme-mfe:{{ TUTOR_VERSION }}"
 MFE_DOCKER_IMAGE_DEV_PREFIX: "gymnasium/gym-theme"
 MOUNTS:
@@ -35,5 +35,5 @@ PLUGINS:
 - mfe-forks
 - shared-cookies
 PREVIEW_LMS_HOST: preview.local.edly.io
-SESSION_COOKIE_DOMAIN: edly.io
-SHARED_COOKIE_DOMAIN: edly.io
+SESSION_COOKIE_DOMAIN: ${ BASE_DOMAIN }
+SHARED_COOKIE_DOMAIN: ${ BASE_DOMAIN }
