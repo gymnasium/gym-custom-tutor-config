@@ -4,6 +4,7 @@ certifi==2024.2.2
 charset-normalizer==3.3.2
 click==8.1.7
 google-auth==2.29.0
+custom_reg_form @ git+https://github.com/gymnasium/custom_registration_form@feat/quince#egg=custom_reg_form
 gym-theme @ git+https://github.com/gymnasium/gym-theme@gym.quince.2#egg=gym_theme
 idna==3.6
 importlib_metadata==7.1.0
