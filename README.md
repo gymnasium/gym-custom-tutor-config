@@ -28,7 +28,7 @@ pip install git+https://github.com/eduNEXT/tvm.git
 
 - Install the Tutor version you wish to use.
 ```
-tvm install v17.0.3
+tvm install v18.1.1
 ```
 
 
@@ -42,12 +42,12 @@ mkdir ~/tutor
 - Create a new TVM project
 Please note the project title cannot include periods, lest TVM puke. In this case, TVM will automatically create a new directory for you.
 ```
-tvm project init quince_2 v17.0.3
+tvm project init redwood v18.1.1
 ```
 
 - enter the directory:
 ```
-cd quince_2
+cd redwood
 ```
 
 - Activate the environment:
@@ -69,7 +69,7 @@ The output should match the directory you're in.
 ```
 git init .
 git remote add origin https://github.com/gymnasium/gym-custom-tutor-config
-git pull origin gym.quince.2 --recurse-submodules
+git pull origin redwood --recurse-submodules
 ```
 
 1. On first install only run the following in the root folder to install packages for our customized Tutor:
