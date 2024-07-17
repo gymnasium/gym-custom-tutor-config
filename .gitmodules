@@ -1,7 +1,7 @@
 [submodule "mfe/brand-openedx"]
 	path = mfe/brand-openedx
 	url = https://github.com/gymnasium/brand-openedx.git
-	branch = gym.quince.1
+	branch = main
 [submodule "mfe/frontend-app-account"]
 	path = mfe/frontend-app-account
 	url = https://github.com/gymnasium/frontend-app-account.git
