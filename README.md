@@ -42,7 +42,7 @@ mkdir ~/tutor
 - Create a new TVM project
 Please note the project title cannot include periods, lest TVM puke. In this case, TVM will automatically create a new directory for you.
 ```
-tvm project init redwood v18.1.1
+tvm project init gym.redwood v18.1.1
 ```
 
 - enter the directory:
