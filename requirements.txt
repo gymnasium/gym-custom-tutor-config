@@ -5,7 +5,7 @@ charset-normalizer==3.3.2
 click==8.1.7
 google-auth==2.29.0
 custom_reg_form @ git+https://github.com/gymnasium/custom_registration_form@feat/quince#egg=custom_reg_form
-gym-theme @ git+https://github.com/gymnasium/gym-theme@gym.quince.2#egg=gym_theme
+gym-theme @ git+https://github.com/gymnasium/gym-theme@gym.redwood#egg=gym_theme
 idna==3.6
 importlib_metadata==7.1.0
 importlib_resources==6.4.0
@@ -26,7 +26,7 @@ requests-oauthlib==2.0.0
 rsa==4.9
 six==1.16.0
 tomli==2.0.1
-tutor==18.1.1
+# tutor==18.1.1
 tutor-forum==18.0.0
 tutor-mfe==18.0.0
 typing_extensions==4.10.0
