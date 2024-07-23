@@ -1,5 +1,5 @@
 name: course-about-dev
-version: 17.0.3
+version: 18.0.0
 patches:
   caddyfile-lms: |
     route /courses/*/about {
