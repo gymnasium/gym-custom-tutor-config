@@ -5,14 +5,14 @@ from tutormfe.hooks import MFE_APPS
 def mfe_forks(mfes):
     mfes["account"] = {
         "repository": "https://github.com/gymnasium/frontend-app-account.git",
-        "version": "gym.quince.3",
+        "version": "gym.redwood",
         "refs": "https://api.github.com/repos/gymnasium/frontend-app-account/git/refs/heads",
         "port": 1997,
         "name": "account",
     }
     mfes["authn"] = {
         "repository": "https://github.com/gymnasium/frontend-app-authn.git",
-        "version": "gym.quince.3",
+        "version": "gym.redwood",
         "refs": "https://api.github.com/repos/gymnasium/frontend-app-authn/git/refs/heads",
         "port": 1999,
         "name": "gym.redwood",
@@ -40,7 +40,7 @@ def mfe_forks(mfes):
     }
     mfes["learning"] = {
         "repository": "https://github.com/gymnasium/frontend-app-learning.git",
-        "version": "gym.quince.3",
+        "version": "gym.redwood",
         "refs": "https://api.github.com/repos/gymnasium/frontend-app-learning/git/refs/heads",
         "port": 2000,
         "name": "learning",
