@@ -237,7 +237,7 @@ Before running Tutor in local mode, have your dev instance running. Login to the
     "CSRF_TOKEN_API_PATH": "/csrf/api/v1/token",
     "DATA_API_BASE_URL":"http://local.edly.io",
     "ENABLE_ACCOUNT_DELETION": "false",
-    "ENABLE_COPPA_COMPLIANCE": "",
+    "ENABLE_COPPA_COMPLIANCE": "true",
     "ENABLE_DEMOGRAPHICS_COLLECTION": "false",
     "ENABLE_DOB_UPDATE": "false",
     "ENABLE_EDX_PERSONAL_DASHBOARD": "false",
