@@ -47,7 +47,7 @@ tvm project init gym.redwood v18.1.1
 
 - enter the directory:
 ```
-cd redwood
+cd gym.redwood
 ```
 
 - Activate the environment:
@@ -69,7 +69,7 @@ The output should match the directory you're in.
 ```
 git init .
 git remote add origin https://github.com/gymnasium/gym-custom-tutor-config
-git pull origin redwood --recurse-submodules
+git pull origin gym.redwood --recurse-submodules
 ```
 
 1. On first install only run the following in the root folder to install packages for our customized Tutor:
