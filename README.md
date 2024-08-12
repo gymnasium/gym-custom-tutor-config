@@ -3,7 +3,7 @@
 - These instructions are WIP.
 - These instructions are currently specific to Mac OS.
 
-<embed src="/docs/prerequisites_snippet.md" />
+<embed src="/docs/_prerequisites_snippet.md" />
 
 ## env variables
 The `.env` file in the project root folder is set with default values for running tutor locally. When running in a production environment, rename `.env.production.example` to `.env.production` and update the value(s) to match your production environment accordingly.
