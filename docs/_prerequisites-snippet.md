@@ -1,2 +1,0 @@
-## Prerequisites
-This proof-of-concept Tutor config depends on a separate marketing frontend running either locally at `edly.io:8888`, or remotely at a domain specified in the `.env` files. See the [gym-eleventy](https://github.com/gymnasium/gym-eleventy) repo for specific instructions on running locally it using the netlify CLI.

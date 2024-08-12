@@ -3,7 +3,8 @@
 - These instructions are WIP.
 - These instructions are currently specific to Mac OS.
 
-<embed src="/docs/_prerequisites_snippet.md" />
+## Prerequisites
+This proof-of-concept Tutor config depends on a separate marketing frontend running either locally at `edly.io:8888`, or remotely at a domain specified in the `.env` files. See the [gym-eleventy](https://github.com/gymnasium/gym-eleventy) repo for specific instructions on running locally it using the netlify CLI.
 
 ## env variables
 The `.env` file in the project root folder is set with default values for running tutor locally. When running in a production environment, rename `.env.production.example` to `.env.production` and update the value(s) to match your production environment accordingly.
