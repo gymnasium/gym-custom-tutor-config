@@ -467,3 +467,12 @@ docker buildx create --use --name=dualcpu --config=./buildkitd-quad.toml
 Note: personally, I've had the most success running a single CPU build.
 
 **Note:** Sometimes `tutor images build` will fail due to network connectivity issues. If this happens, simply retry the command.
+
+
+## Plugins
+
+### Custom Registration Form
+```
+Your models in app(s): 'custom_reg_form', 'third_party_auth' have changes that are not yet reflected in a migration, and so won't be applied.
+  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+```
