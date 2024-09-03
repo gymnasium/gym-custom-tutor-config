@@ -1,35 +1,5 @@
-appdirs==1.4.4
-cachetools==5.3.3
-certifi==2024.2.2
-charset-normalizer==3.3.2
-click==8.1.7
-google-auth==2.29.0
 custom_reg_form @ git+https://github.com/gymnasium/custom_registration_form@feat/quince#egg=custom_reg_form
 gym-theme @ git+https://github.com/gymnasium/gym-theme@gym.redwood#egg=gym_theme
-idna==3.6
-importlib_metadata==7.1.0
-importlib_resources==6.4.0
-Jinja2==3.1.3
-kubernetes==29.0.0
-MarkupSafe==2.1.5
-mypy==1.9.0
-mypy-extensions==1.0.0
-oauthlib==3.2.2
-pyasn1==0.6.0
-pyasn1_modules==0.4.0
-pycryptodome==3.20.0
-python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
-PyYAML==6.0.1
-requests==2.31.0
-requests-oauthlib==2.0.0
-rsa==4.9
-six==1.16.0
-tomli==2.0.1
-# tutor==18.1.1
 tutor-forum==18.0.0
-tutor-mfe==18.0.0
-typing_extensions==4.10.0
-urllib3==1.26.15
-websocket-client==1.7.0
-zipp==3.18.1
+tutor-mfe @ git+https://github.com/gymnasium/tutor-mfe@main#egg=tutor_mfe
