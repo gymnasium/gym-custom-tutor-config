@@ -17,13 +17,13 @@ def mfe_forks(mfes):
         "port": 1999,
         "name": "gym.redwood",
     }
-    mfes["course-about"] = {
-        "repository": "https://github.com/gymnasium/frontend-app-course-about.git",
-        "version": "gym.redwood",
-        "refs": "https://api.github.com/repos/gymnasium/frontend-app-course-about/git/refs/heads",
-        "port": 3000,
-        "name": "course-about",
-    }
+    # mfes["course-about"] = {
+    #     "repository": "https://github.com/gymnasium/frontend-app-course-about.git",
+    #     "version": "gym.redwood",
+    #     "refs": "https://api.github.com/repos/gymnasium/frontend-app-course-about/git/refs/heads",
+    #     "port": 3000,
+    #     "name": "course-about",
+    # }
     mfes["discussions"] = {
         "repository": "https://github.com/gymnasium/frontend-app-discussions.git",
         "version": "gym.redwood",
@@ -52,4 +52,11 @@ def mfe_forks(mfes):
         "port": 1995,
         "name": "profile",
     }
+    # mfes["support-tools"] = {
+    #     "repository": "https://github.com/openedx/frontend-app-support-tools.git",
+    #     "version": "open-release/redwood.2",
+    #     "refs": "https://api.github.com/repos/openedx/frontend-app-support-tools/git/refs/heads",
+    #     "port": 18450,
+    #     "name": "support-tools",
+    # }
     return mfes
