@@ -42,3 +42,7 @@
 	path = plugins/custom-reg-form
 	url = https://github.com/gymnasium/custom_registration_form.git
 	branch = feat/quince
+[submodule "plugins/tutor-contrib-gym-customizations"]
+	path = plugins/tutor-contrib-gym-customizations
+	url = https://github.com/gymnasium/tutor-contrib-gym-customizations
+	branch = main
