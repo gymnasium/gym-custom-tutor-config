@@ -1,5 +1,5 @@
-custom_reg_form @ git+https://github.com/gymnasium/custom_registration_form@feat/quince#egg=custom_reg_form
 gym-theme @ git+https://github.com/gymnasium/gym-theme@gym.redwood#egg=gym_theme
 python-dotenv==1.0.1
+tutor-contrib-gym-customizations @ git+https://github.com/gymnasium/tutor-contrib-gym-customizations@main
 tutor-forum==18.0.0
-tutor-mfe @ git+https://github.com/gymnasium/tutor-mfe@main#egg=tutor_mfe
+tutor-mfe=18.0.1
