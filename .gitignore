@@ -17,11 +17,15 @@ env/
 # tvm folder
 .tvm
 
-.env.production
-.env.staging
+.env.**
+.env
 
-!.env.production.example
-!.env.staging.example
+!.env**.example
+
+# !.env.production.example
+# !.env.staging.example
+# !.env.development.example
+# !.env.local.example
 
 *.temp
 
