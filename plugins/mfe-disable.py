@@ -15,8 +15,8 @@ def _remove_stock_mfes(mfes):
         mfes.pop("course-authoring")
     # if ("discussions" in mfes):
     #     mfes.pop("discussions")
-    # if ("gradebook" in mfes):
-    #     mfes.pop("gradebook")
+    if ("gradebook" in mfes):
+        mfes.pop("gradebook")
     if ("ora-grading" in mfes):
         mfes.pop("ora-grading")
     if ("profile" in mfes):
