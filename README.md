@@ -28,7 +28,7 @@ pip install git+https://github.com/eduNEXT/tvm.git
 
 - Install the Tutor version you wish to use.
 ```
-tvm install v18.1.1
+tvm install v18.x.x
 ```
 
 
@@ -42,12 +42,12 @@ mkdir ~/tutor
 - Create a new TVM project
 Please note the project title cannot include periods, lest TVM puke. In this case, TVM will automatically create a new directory for you.
 ```
-tvm project init gym.redwood v18.1.1
+tvm project init gym_redwood v18.x.x
 ```
 
 - enter the directory:
 ```
-cd gym.redwood
+cd gym_redwood
 ```
 
 - Activate the environment:
@@ -76,6 +76,13 @@ git pull origin gym.redwood --recurse-submodules
 ```
 git submodule update --init --recursive
 pip install -U -r requirements.txt
+```
+
+#### Prepare .env variables
+Copy the `.env.example` file and populate it accordingly. Do not under any circumstances commit a `.env` file with populated values such as keys, secrets, etc.
+
+```
+cp .env.example .env
 ```
 
 1. Check to make sure the env variables are set properly for your enviroment
@@ -116,7 +123,7 @@ tutor config save
 ```
 
 - Activate the remaining plugins:
-`tutor plugins enable caddy-csp course-about-dev gym-theme mfe-disable mfe-forks shared-cookies`
+`tutor plugins enable gym-theme gym-customizations mfe-disable mfe-forks`
 
 ## Tutor Dev Mode
 For development, it's best to run tutor in dev mode instead of local mode.
@@ -126,7 +133,7 @@ Make sure 11ty is running in `dev:tutor` mode: `npm run dev:tutor`, and availabl
 ### Build dev images
 Build all the dev images:
 ```
-tutor images build openedx-dev account-dev authn-dev course-about-dev discussions-dev learner-dashboard-dev learning-dev profile-dev
+tutor images build openedx-dev account-dev authn-dev discussions-dev learner-dashboard-dev learning-dev profile-dev
 ```
 
 If you run into trouble, you can try building each image individually. 
@@ -140,7 +147,6 @@ mfes:
 ```
 tutor images build account-dev
 tutor images build authn-dev
-tutor images build course-about-dev
 tutor images build discussions-dev
 tutor images build learner-dashboard-dev
 tutor images build learning-dev
@@ -371,7 +377,6 @@ tutor dev stop
 * Studio: http://local.edly.io:8001
 * Account: http://apps.local.edly.io:1997/account/
 * Authn: http://apps.local.edly.io:1999/authn/
-* Course About: http://apps.local.edly.io:3000/courses/{course-id}/about
 * Learner Dashboard: http://apps.local.edly.io:1996/learner-dashboard/ or http://local.edly.io:8000/dashboard/
 * Learning (Courseware): http://apps.local.edly.io:2000/learning/course/{course-id}/home
 * Profile: http://apps.local.edly.io:1995/profile/u/{username}
@@ -383,7 +388,6 @@ tutor dev stop
 * Studio: http://studio.local.edly.io
 * Account: http://apps.local.edly.io/account/
 * Authn: http://apps.local.edly.io/authn/
-* Course About: http://local.edly.io/courses/{course-id}/about
 * Learner Dashboard: http://apps.local.edly.io/learner-dashboard/ or http://local.edly.io/dashboard/
 * Learning (Courseware): http://apps.local.edly.io/learning/course/{course-id}/home
 * Profile: http://apps.local.edly.io/profile/u/{username}
@@ -441,6 +445,9 @@ tutor local run cms ./manage.py cms backfill_course_end_dates
 ### Show unused containers:
 `docker ps --filter status=exited --filter status=dead -q`
 
+### Stop all containers
+`docker stop $(docker ps -a -q)`
+
 ## Parallelism
 Docker's default is to utilize all available CPUs in parallel, and this can often cause the MFE image builds to fail. In this event, you can run the following command to limit builds to 1 CPU.
 
@@ -471,8 +478,8 @@ Note: personally, I've had the most success running a single CPU build.
 
 ## Plugins
 
-### Custom Registration Form
-```
-Your models in app(s): 'custom_reg_form', 'third_party_auth' have changes that are not yet reflected in a migration, and so won't be applied.
-  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
-```
+### Gym Theme
+
+
+### Tutor Contrib Gym Customizations
+
