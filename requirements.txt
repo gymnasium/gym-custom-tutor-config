@@ -1,5 +1,5 @@
 gym-theme @ git+https://github.com/gymnasium/gym-theme@gym.redwood#egg=gym_theme
-python-dotenv==1.0.1
+python-dotenv>=1.0.1
 tutor-contrib-gym-customizations @ git+https://github.com/gymnasium/tutor-contrib-gym-customizations@main
 tutor-forum==18.0.0
-tutor-mfe=18.0.1
+tutor-mfe>=18.0.1
