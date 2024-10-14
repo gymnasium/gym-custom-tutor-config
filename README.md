@@ -406,18 +406,51 @@ tutor local do createuser --staff --superuser admin admin@example.com
 
 # Troubleshooting
 
-## Reindex/backfill courses after importing them
+## Accessing Django Shell
+
+`tutor dev|local run lms ./manage.py lms shell`
+
+Example:
+``` 
+from django.conf import settings
+settings.SHARED_COOKIE_DOMAIN
+```
+
+## Things to try if courses/course outlines aren't appearing as expected
 
 ```
-tutor local run cms ./manage.py cms reindex_course --all
-tutor local run cms ./manage.py cms backfill_course_outlines
-tutor local run cms ./manage.py cms backfill_course_tabs
-tutor local run cms ./manage.py cms backfill_course_end_dates
+tutor dev|local run cms ./manage.py cms reindex_course --all
+tutor dev|local run cms ./manage.py cms backfill_course_outlines
+tutor dev|local run cms ./manage.py cms backfill_course_tabs
+tutor dev|local run cms ./manage.py cms backfill_course_end_dates
+
+tutor dev|local run cms ./manage.py cms backfill_orgs_and_org_courses
+
+tutor dev|local run cms ./manage.py cms simulate_publish
+
+tutor dev|local run lms ./manage.py lms makemigrations
+tutor dev|local run lms ./manage.py lms migrate
 ```
+
+## Rebuilding Images on machines with limited RAM
+*cough*digitalocean.
+
+This is an example running in production mode.
+
+1. update https://github.com/gymnasium/gym-custom-tutor-config with the latest submodule changes for MFEs + tutor-contrib-gym-customizations + gym-theme (the plugins are the most important)
+1. in the tutor root directory: `.tvm/bin/activate`
+1. `git pull --recurse-submodules`
+1. `git submodule update --recursive`
+1. just in case, `pip install -e plugins/gym-theme plugins/tutor-contrib-gym-customizations`
+1. `tutor config save`
+1. stopped the instance: `tutor local stop`
+1. kill all running containers: `docker stop $(docker ps -a -q)`
+1. rebuild images with flags: `tutor images build openedx mfe --no-cache --no-registry-cache`
+1. launch: `tutor local launch -I`
 
 ## Migrations
-`manage.py makemigrations` (make new migrations)
-`manage.py migrate` (apply migrations)
+`tutor dev|local run lms ./manage.py lms makemigrations` (make new migrations)
+`tutor dev|local run lms ./manage.py lms migrate` (apply migrations)
 
 ## Verbose Output During Image Builds
 - `tutor images build mfe --docker-arg --progress=plain`
@@ -479,7 +512,6 @@ Note: personally, I've had the most success running a single CPU build.
 ## Plugins
 
 ### Gym Theme
-
 
 ### Tutor Contrib Gym Customizations
 
