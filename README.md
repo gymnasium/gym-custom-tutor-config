@@ -438,7 +438,7 @@ tutor dev|local run lms ./manage.py lms migrate
 This is an example running in production mode.
 
 1. update https://github.com/gymnasium/gym-custom-tutor-config with the latest submodule changes for MFEs + tutor-contrib-gym-customizations + gym-theme (the plugins are the most important)
-1. in the tutor root directory: `.tvm/bin/activate`
+1. in the tutor root directory (~/tutor/redwood): `source .tvm/bin/activate`
 1. `git pull --recurse-submodules`
 1. `git submodule update --recursive`
 1. just in case, `pip install -e plugins/gym-theme plugins/tutor-contrib-gym-customizations`
