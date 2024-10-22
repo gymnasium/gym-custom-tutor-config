@@ -12,7 +12,7 @@ def mfe_forks(mfes):
     }
     mfes["authn"] = {
         "repository": "https://github.com/gymnasium/frontend-app-authn.git",
-        "version": "gym.redwood",
+        "version": "gym-redwood-onetrust",
         "refs": "https://api.github.com/repos/gymnasium/frontend-app-authn/git/refs/heads",
         "port": 1999,
         "name": "authn",
