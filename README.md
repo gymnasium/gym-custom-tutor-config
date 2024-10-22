@@ -42,12 +42,12 @@ mkdir ~/tutor
 - Create a new TVM project
 Please note the project title cannot include periods, lest TVM puke. In this case, TVM will automatically create a new directory for you.
 ```
-tvm project init gym_redwood v18.x.x
+tvm project init redwood v18.x.x
 ```
 
 - enter the directory:
 ```
-cd gym_redwood
+cd redwood
 ```
 
 - Activate the environment:
@@ -116,12 +116,6 @@ Once it's running, create a superuser login for yourself and proceed with the cu
 
 #### Continue with the customizations
 
-- Update the tutor config with the Gymnasium customizations:
-```
-cat config-custom.yml >> config.yml
-tutor config save
-```
-
 - Activate the remaining plugins:
 `tutor plugins enable gym-theme gym-customizations mfe-disable mfe-forks`
 
@@ -158,11 +152,13 @@ If something fails, see the troubleshooting area below.
 #### Dev Mode Bind Mount Setup
 Using bind mounts is essential when developing MFEs. Use the examples below to populate your `config.yml` file.
 
+Warning: Tutor needs at least one MFE running, so if you want to run all the MFEs as bind mounts, uncomment one of the disabled MFEs in the `mfe-disable.py` plugin, such as `gradebook` or `ora-gradebook`.
+
 #### Account-specific bind mounts
 ```
 MOUNTS:
 - ./mfe/frontend-app-account
-- account:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- account:./mfe/gym-frontend-components:/openedx/app/@openedx/gym-frontend
 - account:./mfe/module.config.js:/openedx/app/module.config.js
 ```
 
@@ -170,23 +166,15 @@ MOUNTS:
 ```
 MOUNTS:
 - ./mfe/frontend-app-authn
-- authn:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- authn:./mfe/gym-frontend-components:/openedx/app/@openedx/gym-frontend
 - authn:./mfe/module.config.js:/openedx/app/module.config.js
-```
-
-#### Course About-specific bind mounts
-```
-MOUNTS:
-- ./mfe/frontend-app-course-about
-- course-about:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
-- course-about:./mfe/module.config.js:/openedx/app/module.config.js
 ```
 
 #### Discussions-specific bind mounts
 ```
 MOUNTS:
 - ./mfe/frontend-app-discussions
-- discussions:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- discussions:./mfe/gym-frontend-components:/openedx/app/@openedx/gym-frontend
 - discussions:./mfe/module.config.js:/openedx/app/module.config.js
 ```
 
@@ -194,7 +182,7 @@ MOUNTS:
 ```
 MOUNTS:
 - ./mfe/frontend-app-learner-dashboard
-- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- learner-dashboard:./mfe/gym-frontend-components:/openedx/app/@openedx/gym-frontend
 - learner-dashboard:./mfe/module.config.js:/openedx/app/module.config.js
 ```
 
@@ -202,7 +190,7 @@ MOUNTS:
 ```
 MOUNTS:
 - ./mfe/frontend-app-learning
-- learning:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- learning:./mfe/gym-frontend-components:/openedx/app/@openedx/gym-frontend
 - learning:./mfe/module.config.js:/openedx/app/module.config.js
 ```
 
@@ -210,7 +198,7 @@ MOUNTS:
 ```
 MOUNTS:
 - ./mfe/frontend-app-profile
-- profile:./mfe/gym-frontend-components:/openedx/app/@edx/gym-frontend
+- profile:./mfe/gym-frontend-components:/openedx/app/@openedx/gym-frontend
 - profile:./mfe/module.config.js:/openedx/app/module.config.js
 ```
 
@@ -221,83 +209,20 @@ npm install
 ```
 
 ## Start Tutor in Dev Mode
-Theoretically, you should be able to launch tutor in dev mode:
+Theoretically, you should be able to launch tutor in dev mode (skipping interactive mode):
 ```
-tutor dev launch
+tutor dev launch -I
 ```
 ---
 ## Tutor Local "Production" Mode
 Run tutor in emulated "production" mode (do not enable SSL if you're on your local machine).
 
 ## Local Mode
-Before running Tutor in local mode, have your dev instance running. Login to the site admin using your superuser: `local.edly.io:8000/admin` and go to Site Configurations. Edit the config called `local.edly.io` to include the following:
-
-```
-{
-    "ENABLE_PROFILE_MICROFRONTEND": "true",
-    "ACCESS_TOKEN_COOKIE_NAME": "edx-jwt-cookie-header-payload",
-    "BASE_URL": "http://edly.io:8888",
-    "CMS_HOST": "studio.local.edly.io",
-    "COLLECT_YEAR_OF_BIRTH":"false",
-    "CONTACT_URL":"http://edly.io:8888/support/",
-    "CSRF_TOKEN_API_PATH": "/csrf/api/v1/token",
-    "DATA_API_BASE_URL":"http://local.edly.io",
-    "ENABLE_ACCOUNT_DELETION": "false",
-    "ENABLE_COPPA_COMPLIANCE": "true",
-    "ENABLE_DEMOGRAPHICS_COLLECTION": "false",
-    "ENABLE_DOB_UPDATE": "false",
-    "ENABLE_EDX_PERSONAL_DASHBOARD": "false",
-    "ENABLE_JUMPNAV": "false",
-    "FAVICON_URL": "http://edly.io:8888/favicon.svg",
-    "INFO_EMAIL": "help@thegymnasium.com",
-    "LANGUAGE_PREFERENCE_COOKIE_NAME": "openedx-language-preference",
-    "LMS_BASE_URL": "http://local.edly.io",
-    "LOGIN_ISSUE_SUPPORT_LINK": "http://edly.io:8888/support/",
-    "LOGIN_URL": "http://local.edly.io/login",
-    "LOGOUT_URL": "http://local.edly.io/logout",
-    "LOGO_TRADEMARK_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
-    "LOGO_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
-    "LOGO_WHITE_URL": "http://studio.local.edly.io/static/studio/gym-theme/images/studio-logo.png",
-    "MARKETING_EMAILS_OPT_IN": "",
-    "MARKETING_SITE_BASE_URL": "http://edly.io:8888",
-    "MFE_CONFIG_API_URL": "http://local.edly.io/api/mfe_config/v1",
-    "NODE_ENV": "production",
-    "ORDER_HISTORY_URL": "http://edly.io:8888",
-    "PASSWORD_RESET_SUPPORT_LINK": "mailto:help@thegymnasium.com",
-    "PRIVACY_POLICY": "http://edly.io:8888/privacy-policy/",
-    "PRIVACY_POLICY_URL": "http://edly.io:8888/privacy-policy/",
-    "REFRESH_ACCESS_TOKEN_ENDPOINT": "http://local.edly.io/login_refresh",
-    "SEARCH_CATALOG_URL":"http://edly.io:8888/courses/",
-    "SECURE_COOKIES": "true",
-    "SEGMENT_KEY": "",
-    "SHOW_ACCESSIBILITY_PAGE": "false",
-    "site_domain": "edly.io",
-    "SITE_NAME": "Gymnasium",
-    "STUDIO_BASE_URL": "http://studio.local.edly.io",
-    "SUPPORT_URL": "http://edly.io:8888/support/",
-    "SUPPORT_URL_TO_UNLINK_SOCIAL_MEDIA_ACCOUNT": "http://edly.io:8888/support/",
-    "SESSION_COOKIE_DOMAIN": "edly.io",
-    "SHARED_COOKIE_DOMAIN": "edly.io",
-    "SUPPORT_EMAIL": "mailto:help@thegymnasium.com",
-    "TERMS_OF_SERVICE_URL": "http://edly.io:8888",
-    "TOS_AND_HONOR_CODE": "http://edly.io:8888",
-    "TOS_LINK": "http://edly.io:8888",
-    "USER_INFO_COOKIE_NAME": "edx-user-info"
-}
-```
-Note: some of the above may be overkill. We will likely be able to get away with fewer configs, TBD.
-
-Stop dev tutor: `tutor dev stop`
+Be sure to stop a running instance of tutor in dev mode: `tutor dev stop`
 
 ### 1. Running in "local" mode on your local machine:
 
 Make sure 11ty is running locally in `local:tutor` mode: `npm run local:tutor`.
-
-
-Disable development plugins, enable production plugins:
-```
-tutor plugins disable course-about-dev; tutor plugins enable course-about-prod
-```
 
 Save your config again:
 ```
@@ -311,8 +236,8 @@ tutor images build openedx mfe
 ```
 If you have issues, you could try the command above with the ` --no-cache --no-registry-cache` flags.
 
-Start tutor in local mode:
-`tutor local launch`
+Start tutor in local mode (skipping interactive mode):
+`tutor local launch -I`
 
 
 #### 2. Running an actual production environment
@@ -322,7 +247,7 @@ Let's use `gym.soy` as our example.  Rename `.env.production.example` to `.env.p
 ```
 tutor images build openedx --no-cache --no-registry-cache
 tutor images build mfe --no-cache --no-registry-cache
-tutor local launch
+tutor local launch -I
 ```
 
 If the image fails to build, run the command again without the flags, and it will pick up from where it left off: `tutor images build openedx` or `tutor images build mfe`
