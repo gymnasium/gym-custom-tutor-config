@@ -72,10 +72,15 @@ git remote add origin https://github.com/gymnasium/gym-custom-tutor-config
 git pull origin gym.redwood --recurse-submodules
 ```
 
-1. On first install only run the following in the root folder to install packages for our customized Tutor:
+1. **On first install only**: run the following in the root folder to install packages for our customized Tutor:
 ```
 git submodule update --init --recursive
 pip install -U -r requirements.txt
+```
+
+1. On subsequent runs, be sure to get the latest submodule changes before rebuilding images, etc:
+```
+git submodule update --recursive --remote
 ```
 
 #### Prepare .env variables
@@ -92,11 +97,16 @@ python -m dotenv list
 If you don't see the following set properly, be sure to update the .env file accordingly.
 
 ```
-BASE_DOMAIN=yourdomain
-MARKETING_SITE_BASE_URL=http(s)://yourdomain
-SESSION_COOKIE_DOMAIN=yourdomain
-SHARED_COOKIE_DOMAIN=yourdomain
+ROOT_DOMAIN=yourdomain
+ROOT_BASE=yourdomain:8888 (port is optional, and only applies to local development in most cases)
+ROOT_URL=http(s)://${ROOT_BASE}
+ACCREDIBLE_API_KEY=setme
+SEGMENT_API_KEY=setme
+ONETRUST_COOKIE_SCRIPT_ID=setme
+INTERCOM_APP_ID=setme
 ```
+
+You can get the API keys from your friendly neighborhood developers.
 
 1. Run Tutor once without some plugins enabled to make sure you can get it up and running, and to add site configs.
 
@@ -118,6 +128,8 @@ Once it's running, create a superuser login for yourself and proceed with the cu
 
 - Activate the remaining plugins:
 `tutor plugins enable gym-theme gym-customizations mfe-disable mfe-forks`
+
+Save: `tutor config save`
 
 ## Tutor Dev Mode
 For development, it's best to run tutor in dev mode instead of local mode.
@@ -281,9 +293,10 @@ tutor dev restart learning-dev
 Subsequently, start up as follows:
 
 ```
+git pull
 git submodule update --recursive --remote
 tutor config save
-tutor dev launch
+tutor dev launch -I
 ```
 
 ## Getting Started
@@ -302,18 +315,18 @@ tutor dev stop
 * Studio: http://local.edly.io:8001
 * Account: http://apps.local.edly.io:1997/account/
 * Authn: http://apps.local.edly.io:1999/authn/
-* Learner Dashboard: http://apps.local.edly.io:1996/learner-dashboard/ or http://local.edly.io:8000/dashboard/
+* Learner Dashboard: http://apps.local.edly.io:1996/learner-dashboard/
 * Learning (Courseware): http://apps.local.edly.io:2000/learning/course/{course-id}/home
 * Profile: http://apps.local.edly.io:1995/profile/u/{username}
 
 ### Tutor Local "Production" Endpoints:
 
 * Marketing site: http://edly.io:8888
-* LMS: http://local.edly.io
+* LMS: http://local.edly.io (will redirect to marketing site)
 * Studio: http://studio.local.edly.io
 * Account: http://apps.local.edly.io/account/
 * Authn: http://apps.local.edly.io/authn/
-* Learner Dashboard: http://apps.local.edly.io/learner-dashboard/ or http://local.edly.io/dashboard/
+* Learner Dashboard: http://apps.local.edly.io/learner-dashboard/
 * Learning (Courseware): http://apps.local.edly.io/learning/course/{course-id}/home
 * Profile: http://apps.local.edly.io/profile/u/{username}
 
@@ -365,7 +378,7 @@ This is an example running in production mode.
 1. update https://github.com/gymnasium/gym-custom-tutor-config with the latest submodule changes for MFEs + tutor-contrib-gym-customizations + gym-theme (the plugins are the most important)
 1. in the tutor root directory (~/tutor/redwood): `source .tvm/bin/activate`
 1. `git pull --recurse-submodules`
-1. `git submodule update --recursive`
+1. `git submodule update --recursive --remote`
 1. just in case, `pip install -e plugins/gym-theme plugins/tutor-contrib-gym-customizations`
 1. `tutor config save`
 1. stopped the instance: `tutor local stop`
