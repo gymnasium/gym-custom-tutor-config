@@ -370,6 +370,11 @@ tutor dev|local run lms ./manage.py lms makemigrations
 tutor dev|local run lms ./manage.py lms migrate
 ```
 
+## Watching for theme changes
+```
+tutor dev run watchthemes
+```
+
 ## Rebuilding Images on machines with limited RAM
 *cough*digitalocean.
 
