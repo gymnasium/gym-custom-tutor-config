@@ -1,12 +1,12 @@
 module.exports = {
   localModules: [
     {
-      moduleName: '@edx/brand',
+      moduleName: '@openedx/brand',
       dir: '../brand-openedx'
     },
     {
-      moduleName: '@edx/gym-frontend',
-      dir: '../@edx/gym-frontend'
+      moduleName: '@openedx/gym-frontend',
+      dir: '../gym-frontend-components'
     }
   ],
 };
