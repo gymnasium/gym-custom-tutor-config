@@ -100,6 +100,7 @@ If you don't see the following set properly, be sure to update the .env file acc
 ROOT_DOMAIN=yourdomain
 ROOT_BASE=yourdomain:8888 (port is optional, and only applies to local development in most cases)
 ROOT_URL=http(s)://${ROOT_BASE}
+API_URL=${ROOT_URL} should be ROOT_URL for local development and a netlify-based remote URL for remote environments
 ACCREDIBLE_API_KEY=setme
 SEGMENT_API_KEY=setme
 ONETRUST_COOKIE_SCRIPT_ID=setme
